@@ -84,7 +84,7 @@ class PalladioDrawer extends StatelessWidget {
                       fileName: "gironi.png",
                     ),
                     title: const PalladioText(
-                      "Gironi",
+                      "Classifica gironi",
                       type: PTextType.h3,
                     ),
                     onTap: () async {

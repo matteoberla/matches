@@ -7,6 +7,7 @@ import 'package:matches/controllers/matches_fin_handlers/matches_fin_bottom_shee
 import 'package:matches/controllers/matches_fin_handlers/matches_fin_requests.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
 import 'package:matches/controllers/teams_handlers/teams_handler.dart';
+import 'package:matches/models/fasi_models/fasi_model.dart';
 import 'package:matches/models/matches_models/matches_bet_model.dart';
 import 'package:matches/models/matches_models/matches_model.dart';
 import 'package:matches/models/selection_list_item_model.dart';
@@ -15,6 +16,7 @@ import 'package:matches/screens/selection_list.dart';
 import 'package:matches/state_management/http_provider/http_provider.dart';
 import 'package:matches/state_management/matches_fin_provider/matches_fin_provider.dart';
 import 'package:matches/state_management/teams_provider/teams_provider.dart';
+import 'package:matches/styles.dart';
 import 'package:provider/provider.dart';
 
 class MatchesFinHandler {
@@ -146,6 +148,28 @@ class MatchesFinHandler {
 
   ///
   ///
+  Color getTileColor(Fasi? fase) {
+    if (fase != null) {
+      switch (fase.id) {
+        case 2:
+          //ottavi
+          return Colors.lightGreen[200]!;
+        case 3:
+          //quarti
+          return Colors.teal[200]!;
+        case 4:
+          //semi
+          return Colors.deepOrange[200]!;
+        case 5:
+          //fin
+          return Colors.amberAccent[200]!;
+        default:
+          backgroundColor;
+      }
+    }
+    return backgroundColor;
+  }
+
   String? getTeamDescFromId(BuildContext context, int? id) {
     var teamsProvider = Provider.of<TeamsProvider>(context, listen: false);
 

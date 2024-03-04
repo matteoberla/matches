@@ -36,7 +36,7 @@ class _GironiPageState extends State<GironiPage> {
       child: Scaffold(
         key: _key,
         appBar: PalladioAppBar(
-          title: "Gironi",
+          title: "Classifica gironi",
           backgroundColor: canvasColor,
           leading: IconButton(
             onPressed: () {

@@ -63,7 +63,7 @@ class MatchFinTile extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: backgroundColor,
+              color: matchesFinHandler.getTileColor(fase),
             ),
             child: Padding(
               padding: const EdgeInsets.all(5.0),

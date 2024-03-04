@@ -9,6 +9,7 @@ import 'package:matches/components/palladio_std_components/palladio_text_input.d
 import 'package:matches/components/typed_widgets_components/typed_boolean_widget.dart';
 import 'package:matches/controllers/capo_euro_handlers/capo_euro_callback.dart';
 import 'package:matches/controllers/capo_euro_handlers/capo_euro_handler.dart';
+import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/setup_handlers/setup_callback.dart';
 import 'package:matches/controllers/text_controller_handler.dart';
 import 'package:matches/models/capo_euro_models/capo_euro_bet_model.dart';
@@ -28,6 +29,7 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
 
   //
   SetupCallback setupCallback = SetupCallback();
+  LoginHandler loginHandler = LoginHandler();
   CapoEuroCallback capoEuroCallback = CapoEuroCallback();
   CapoEuroHandler capoEuroHandler = CapoEuroHandler();
 
@@ -117,19 +119,22 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    PalladioActionButton(
-                      title: capoEuroProvider.showUsersBetList
-                          ? "Indietro"
-                          : "Imposta risultato",
-                      onTap: () async {
-                        capoEuroCallback
-                            .onImpostaRisultatoPressed(capoEuroProvider);
-                      },
-                      backgroundColor: interactiveColor,
-                    ),
-                  ],
+                Visibility(
+                  visible: loginHandler.currentUserIsAdmin(context),
+                  child: Row(
+                    children: [
+                      PalladioActionButton(
+                        title: capoEuroProvider.showUsersBetList
+                            ? "Indietro"
+                            : "Imposta risultato",
+                        onTap: () async {
+                          capoEuroCallback
+                              .onImpostaRisultatoPressed(capoEuroProvider);
+                        },
+                        backgroundColor: interactiveColor,
+                      ),
+                    ],
+                  ),
                 ),
                 Visibility(
                   visible: capoEuroProvider.showUsersBetList,

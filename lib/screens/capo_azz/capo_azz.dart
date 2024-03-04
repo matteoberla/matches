@@ -9,6 +9,7 @@ import 'package:matches/components/palladio_std_components/palladio_text_input.d
 import 'package:matches/components/typed_widgets_components/typed_boolean_widget.dart';
 import 'package:matches/controllers/capo_azz_handlers/capo_azz_callback.dart';
 import 'package:matches/controllers/capo_azz_handlers/capo_azz_handler.dart';
+import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/setup_handlers/setup_callback.dart';
 import 'package:matches/controllers/text_controller_handler.dart';
 import 'package:matches/models/capo_azz_models/capo_azz_bet_model.dart';
@@ -28,6 +29,7 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
 
   //
   SetupCallback setupCallback = SetupCallback();
+  LoginHandler loginHandler = LoginHandler();
   CapoAzzCallback capoAzzCallback = CapoAzzCallback();
   CapoAzzHandler capoAzzHandler = CapoAzzHandler();
 
@@ -111,19 +113,22 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  PalladioActionButton(
-                    title: capoAzzProvider.showUsersBetList
-                        ? "Indietro"
-                        : "Imposta risultato",
-                    onTap: () async {
-                      capoAzzCallback
-                          .onImpostaRisultatoPressed(capoAzzProvider);
-                    },
-                    backgroundColor: interactiveColor,
-                  ),
-                ],
+              Visibility(
+                visible: loginHandler.currentUserIsAdmin(context),
+                child: Row(
+                  children: [
+                    PalladioActionButton(
+                      title: capoAzzProvider.showUsersBetList
+                          ? "Indietro"
+                          : "Imposta risultato",
+                      onTap: () async {
+                        capoAzzCallback
+                            .onImpostaRisultatoPressed(capoAzzProvider);
+                      },
+                      backgroundColor: interactiveColor,
+                    ),
+                  ],
+                ),
               ),
               Visibility(
                 visible: capoAzzProvider.showUsersBetList,
