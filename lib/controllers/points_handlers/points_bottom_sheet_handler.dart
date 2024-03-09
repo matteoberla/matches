@@ -30,6 +30,7 @@ class PointsBottomSheetHandler {
             ),
             child: Scaffold(
               body: PalladioBody(
+                showBottomBar: false,
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

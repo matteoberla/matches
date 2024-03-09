@@ -11,9 +11,9 @@ class HttpHandler {
 
   static get ipServer {
     //TODO modifica endpoint
-    return "https://em2024.netsons.org";
+    //return "https://em2024.netsons.org";
     //return "http://berlatidns.hopto.org:8081";
-    //return "http://localhost";
+    return "http://localhost";
   }
 
   static get endpoint async {

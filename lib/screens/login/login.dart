@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                           // username textfield
                           LoginInfoTextfield(
                             controller: usernameController,
-                            hintText: 'E-mail',
+                            hintText: 'E-mail / Tel. ',
                             obscureText: false,
                           ),
 
@@ -89,21 +89,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
 
                           const SizedBox(height: 10),
-
-                          // forgot password?
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 25.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'Password dimenticata?',
-                                  style: TextStyle(color: Colors.grey[600]),
-                                ),
-                              ],
-                            ),
-                          ),
 
                           const SizedBox(height: 25),
 

@@ -29,7 +29,7 @@ class SignupHandler {
     if (signupResponse.statusCode == 200) {
       SignupModel signupModel =
           SignupModel.fromJson(json.decode(signupResponse.body));
-      if (signupModel.message == "") {
+      if (signupModel.message == "ok") {
         return true;
       } else {
         await Alerts.showErrorAlertNoContext(

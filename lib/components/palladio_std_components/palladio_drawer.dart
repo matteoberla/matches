@@ -123,7 +123,7 @@ class PalladioDrawer extends StatelessWidget {
                   ListTile(
                     leading: const PalladioAssetImage(
                       directory: "general",
-                      fileName: "matches.png",
+                      fileName: "team.png",
                     ),
                     title: const PalladioText(
                       "Team rivelazione",
@@ -137,7 +137,7 @@ class PalladioDrawer extends StatelessWidget {
                   ListTile(
                     leading: const PalladioAssetImage(
                       directory: "general",
-                      fileName: "matches.png",
+                      fileName: "capo.png",
                     ),
                     title: const PalladioText(
                       "Capocannoniere Euro",
@@ -151,7 +151,7 @@ class PalladioDrawer extends StatelessWidget {
                   ListTile(
                     leading: const PalladioAssetImage(
                       directory: "general",
-                      fileName: "matches.png",
+                      fileName: "capo.png",
                     ),
                     title: const PalladioText(
                       "Capocannoniere Azzurro",
@@ -181,7 +181,7 @@ class PalladioDrawer extends StatelessWidget {
                     ListTile(
                       leading: const PalladioAssetImage(
                         directory: "general",
-                        fileName: "squadre.png",
+                        fileName: "class.png",
                       ),
                       title: const PalladioText(
                         "Classifica",
