@@ -73,10 +73,12 @@ class LoginHandler {
 
       if (loginModel.message == null) {
         //salvo dati di accesso
+        httpProvider.updateLoadingState(true);
         await LoginSharedPreferences.saveAccessInformation(loginModel.token);
         await LoginSharedPreferences.saveLoginCredentials(
             provider.username, provider.password);
         provider.updateCurrentUser(loginModel);
+        httpProvider.updateLoadingState(false);
 
         //inizializzazione dati app
         if (context.mounted) {
