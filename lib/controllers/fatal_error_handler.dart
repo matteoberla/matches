@@ -13,23 +13,35 @@ class FatalErrorHandler {
     StackTrace stackTraceGetRequest = StackTrace.fromString(
         "\nNetwork exception while making[$method]: $uri \n\nwith ${method == "GET" ? "queryParameters" : "body"}:$queryParameters\n\nresponse[${response.statusCode}]:${response.body.toString()}");
 
-    if (response.statusCode == 401) {
-      print("401 - Utente non autorizzato");
-
-      //server401("Network Error - Login error", stackTraceGetRequest);
-    } else if (response.statusCode == 404) {
-      server404("Network Error - Not found", stackTraceGetRequest);
-    } else if (response.statusCode == 408) {
-      server408("Network Error - Timeout", stackTraceGetRequest);
-    } else if (response.statusCode == 503) {
-      server503("Network Error - Not available", stackTraceGetRequest);
-    } else if (response.statusCode != 200) {
-      fatalError("Network Error", stackTraceGetRequest);
-    }
     var httpProvider = Provider.of<HttpProvider>(
         navigatorKey.currentState!.context,
         listen: false);
-    httpProvider.updateLoadingState(false);
+
+    if (response.statusCode == 401) {
+      print("401 - Login scaduto");
+      Navigator.of(navigatorKey.currentState!.context).pushNamedAndRemoveUntil(
+          '/login', (route) => route.settings.name == '/login');
+      httpProvider.updateLoadingState(false);
+      //server401("Network Error - Login error", stackTraceGetRequest);
+    } else if (response.statusCode == 404) {
+      server404("Network Error - Not found", stackTraceGetRequest);
+      httpProvider.updateLoadingState(false);
+    } else if (response.statusCode == 408) {
+      server408("Network Error - Timeout", stackTraceGetRequest);
+      httpProvider.updateLoadingState(false);
+    } else if (response.statusCode == 503) {
+      server503("Network Error - Not available", stackTraceGetRequest);
+      httpProvider.updateLoadingState(false);
+    } else if (response.statusCode == 500) {
+      fatalError("Network Error", stackTraceGetRequest);
+      httpProvider.updateLoadingState(false);
+    } else if (response.statusCode == 200) {
+      //RESPONSE OK
+    } else {
+      fatalError(
+          "${response.statusCode} - Network Error", stackTraceGetRequest);
+      httpProvider.updateLoadingState(false);
+    }
   }
 
   showFatalErrorAlert(
