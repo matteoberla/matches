@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matches/controllers/goal_veloce_handlers/goal_veloce_handler.dart';
+import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/state_management/goal_veloce_provider/goal_veloce_provider.dart';
 
 class GoalVeloceCallback {
@@ -19,8 +20,13 @@ class GoalVeloceCallback {
   }
 
   onSavePressed(BuildContext context, GoalVeloceProvider provider) async {
-    GoalVeloceHandler goalVeloceHandler = GoalVeloceHandler();
-    await goalVeloceHandler.verifyGoalVeloce(context, provider);
+    LoginHandler loginHandler = LoginHandler();
+    bool editable = await loginHandler.resultCanBeEdited(context);
+
+    if (editable && context.mounted) {
+      GoalVeloceHandler goalVeloceHandler = GoalVeloceHandler();
+      await goalVeloceHandler.verifyGoalVeloce(context, provider);
+    }
   }
 
   onImpostaRisultatoPressed(BuildContext context, GoalVeloceProvider provider) {
