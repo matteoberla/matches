@@ -75,13 +75,13 @@ class MatchTile extends StatelessWidget {
                         team: team1,
                       ),
                       Visibility(
-                        visible:
-                            match.goalTeam1 != null && match.goalTeam2 != null,
+                        visible: matchBet?.goalTeam1 != null &&
+                            matchBet?.goalTeam2 != null,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10.0, vertical: 2.0),
                           child: PalladioText(
-                            "${match.goalTeam1} : ${match.goalTeam2}",
+                            "${matchBet?.goalTeam1} : ${matchBet?.goalTeam2}",
                             type: PTextType.h1,
                             bold: true,
                           ),
@@ -103,7 +103,7 @@ class MatchTile extends StatelessWidget {
                           color: successColor,
                         ),
                         PalladioText(
-                          "Risultato (${matchBet?.goalTeam1} : ${matchBet?.goalTeam2})",
+                          "Risultato ${match.goalTeam1 != null && match.goalTeam2 != null ? "fin. (${match.goalTeam1} : ${match.goalTeam2})" : "inserito"}",
                           type: PTextType.h3,
                           textColor: opaqueTextColor,
                         ),

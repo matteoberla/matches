@@ -59,6 +59,8 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
               Visibility(
                 visible: capoAzzProvider.showUsersBetList == false,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     const PalladioText(
                       "1 nome",
@@ -75,6 +77,27 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                         TextControllerHandler.moveCursorToEnd(
                             capoAzzProvider.capoAzzBetList?[0].betController);
                       },
+                    ),
+                    Visibility(
+                      visible:
+                          capoAzzProvider.capoAzzBetList?[0].points != null,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.control_point_duplicate_sharp,
+                            color: interactiveColor,
+                          ),
+                          const EmptySpace(
+                            width: 5,
+                          ),
+                          PalladioText(
+                            "Punti: ${capoAzzProvider.capoAzzBetList?[0].points}",
+                            type: PTextType.h3,
+                            textColor: opaqueTextColor,
+                          ),
+                        ],
+                      ),
                     ),
                     const EmptySpace(
                       height: 5,
@@ -94,6 +117,27 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                         TextControllerHandler.moveCursorToEnd(
                             capoAzzProvider.capoAzzBetList?[1].betController);
                       },
+                    ),
+                    Visibility(
+                      visible:
+                          capoAzzProvider.capoAzzBetList?[1].points != null,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.control_point_duplicate_sharp,
+                            color: interactiveColor,
+                          ),
+                          const EmptySpace(
+                            width: 5,
+                          ),
+                          PalladioText(
+                            "Punti: ${capoAzzProvider.capoAzzBetList?[1].points}",
+                            type: PTextType.h3,
+                            textColor: opaqueTextColor,
+                          ),
+                        ],
+                      ),
                     ),
                     const EmptySpace(
                       height: 10,

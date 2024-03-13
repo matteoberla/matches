@@ -79,6 +79,27 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                               .capoEuroBetList?[0].betController);
                         },
                       ),
+                      Visibility(
+                        visible:
+                            capoEuroProvider.capoEuroBetList?[0].points != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.control_point_duplicate_sharp,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Punti: ${capoEuroProvider.capoEuroBetList?[0].points}",
+                              type: PTextType.h3,
+                              textColor: opaqueTextColor,
+                            ),
+                          ],
+                        ),
+                      ),
                       const EmptySpace(
                         height: 5,
                       ),
@@ -97,6 +118,27 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                           TextControllerHandler.moveCursorToEnd(capoEuroProvider
                               .capoEuroBetList?[1].betController);
                         },
+                      ),
+                      Visibility(
+                        visible:
+                            capoEuroProvider.capoEuroBetList?[1].points != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.control_point_duplicate_sharp,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Punti: ${capoEuroProvider.capoEuroBetList?[1].points}",
+                              type: PTextType.h3,
+                              textColor: opaqueTextColor,
+                            ),
+                          ],
+                        ),
                       ),
                       const EmptySpace(
                         height: 10,

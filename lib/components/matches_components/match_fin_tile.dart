@@ -38,8 +38,13 @@ class MatchFinTile extends StatelessWidget {
     MatchesBet? matchBet =
         matchesFinHandler.getMatchBetByMatchId(matchesFinProvider, match.id);
 
-    Teams? team1 = teamsHandler.getTeamById(teamsProvider, matchBet?.idTeam1);
-    Teams? team2 = teamsHandler.getTeamById(teamsProvider, matchBet?.idTeam2);
+    Teams? team1Bet =
+        teamsHandler.getTeamById(teamsProvider, matchBet?.idTeam1);
+    Teams? team2Bet =
+        teamsHandler.getTeamById(teamsProvider, matchBet?.idTeam2);
+
+    Teams? team1 = teamsHandler.getTeamById(teamsProvider, match.idTeam1);
+    Teams? team2 = teamsHandler.getTeamById(teamsProvider, match.idTeam2);
 
     Fasi? fase = fasiHandler.getFaseById(fasiProvider, match.fase);
 
@@ -86,9 +91,11 @@ class MatchFinTile extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             PalladioText(
@@ -99,7 +106,7 @@ class MatchFinTile extends StatelessWidget {
                             Row(
                               children: [
                                 TeamFlagName(
-                                  team: team1,
+                                  team: team1Bet,
                                 ),
                               ],
                             ),
@@ -107,8 +114,8 @@ class MatchFinTile extends StatelessWidget {
                         ),
                       ),
                       Visibility(
-                        visible:
-                            match.goalTeam1 == null && match.goalTeam2 == null,
+                        visible: matchBet?.goalTeam1 == null &&
+                            matchBet?.goalTeam2 == null,
                         child: Container(
                           decoration: const ShapeDecoration(
                             shape: StadiumBorder(),
@@ -127,13 +134,13 @@ class MatchFinTile extends StatelessWidget {
                         ),
                       ),
                       Visibility(
-                        visible:
-                            match.goalTeam1 != null && match.goalTeam2 != null,
+                        visible: matchBet?.goalTeam1 != null &&
+                            matchBet?.goalTeam2 != null,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10.0, vertical: 2.0),
                           child: PalladioText(
-                            "${match.goalTeam1} : ${match.goalTeam2}",
+                            "${matchBet?.goalTeam1} : ${matchBet?.goalTeam2}",
                             type: PTextType.h1,
                             bold: true,
                           ),
@@ -151,7 +158,7 @@ class MatchFinTile extends StatelessWidget {
                             Row(
                               children: [
                                 TeamFlagName(
-                                  team: team2,
+                                  team: team2Bet,
                                   nameOnLeft: true,
                                 ),
                               ],
@@ -162,9 +169,8 @@ class MatchFinTile extends StatelessWidget {
                     ],
                   ),
                   Visibility(
-                    visible: matchBet != null &&
-                        matchBet.goalTeam1 != null &&
-                        matchBet.goalTeam2 != null,
+                    visible: matchBet?.goalTeam1 != null &&
+                        matchBet?.goalTeam2 != null,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -173,7 +179,7 @@ class MatchFinTile extends StatelessWidget {
                           color: successColor,
                         ),
                         PalladioText(
-                          "Risultato (${team1?.name?.substring(0, 3).toUpperCase()} ${matchBet?.goalTeam1} : ${team2?.name?.substring(0, 3).toUpperCase()} ${matchBet?.goalTeam2})",
+                          "Risultato ${match.goalTeam1 != null && match.goalTeam2 != null ? "fin. (${team1?.name?.substring(0, 3).toUpperCase()} ${match.goalTeam1} : ${team2?.name?.substring(0, 3).toUpperCase()} ${match.goalTeam2})" : "inserito"}",
                           type: PTextType.h3,
                           textColor: opaqueTextColor,
                         ),
