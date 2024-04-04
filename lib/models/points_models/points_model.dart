@@ -28,6 +28,10 @@ class Points {
   String? totalMatchesPoints;
   String? totalGironiPoints;
   String? totalMatchesFinPoints;
+  String? totalMatchesFinBonusQuarti;
+  String? totalMatchesFinBonusSemi;
+  String? totalMatchesFinBonusFinal;
+  String? totalMatchesFinBonusTotal;
   String? totalGoalVelocePoints;
   String? totalTeamRivelazPoints;
   String? totalCapoAzzPoints;
@@ -41,6 +45,10 @@ class Points {
       this.totalMatchesPoints,
       this.totalGironiPoints,
       this.totalMatchesFinPoints,
+      this.totalMatchesFinBonusQuarti,
+      this.totalMatchesFinBonusSemi,
+      this.totalMatchesFinBonusFinal,
+      this.totalMatchesFinBonusTotal,
       this.totalGoalVelocePoints,
       this.totalTeamRivelazPoints,
       this.totalCapoAzzPoints,
@@ -54,6 +62,10 @@ class Points {
     totalMatchesPoints = json['total_matches_points'];
     totalGironiPoints = json['total_gironi_points'];
     totalMatchesFinPoints = json['total_matches_fin_points'];
+    totalMatchesFinBonusQuarti = json['total_matches_fin_bonus_quarti'];
+    totalMatchesFinBonusSemi = json['total_matches_fin_bonus_semi'];
+    totalMatchesFinBonusFinal = json['total_matches_fin_bonus_final'];
+    totalMatchesFinBonusTotal = json['total_matches_fin_bonus_total'];
     totalGoalVelocePoints = json['total_goal_veloce_points'];
     totalTeamRivelazPoints = json['total_team_rivelaz_points'];
     totalCapoAzzPoints = json['total_capo_azz_points'];
@@ -69,6 +81,10 @@ class Points {
     data['total_matches_points'] = totalMatchesPoints;
     data['total_gironi_points'] = totalGironiPoints;
     data['total_matches_fin_points'] = totalMatchesFinPoints;
+    data['total_matches_fin_bonus_quarti'] = totalMatchesFinBonusQuarti;
+    data['total_matches_fin_bonus_semi'] = totalMatchesFinBonusSemi;
+    data['total_matches_fin_bonus_final'] = totalMatchesFinBonusFinal;
+    data['total_matches_fin_bonus_total'] = totalMatchesFinBonusTotal;
     data['total_goal_veloce_points'] = totalGoalVelocePoints;
     data['total_team_rivelaz_points'] = totalTeamRivelazPoints;
     data['total_capo_azz_points'] = totalCapoAzzPoints;

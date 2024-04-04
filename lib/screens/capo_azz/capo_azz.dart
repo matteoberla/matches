@@ -188,8 +188,21 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          PalladioText(userBet.value ?? "???",
-                              type: PTextType.h3),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              PalladioText(
+                                  "${userBet.betNum}. ${userBet.value ?? "???"}",
+                                  type: PTextType.h3),
+                              PalladioText(
+                                capoAzzHandler.getUsernameFromUserId(
+                                        context, userBet) ??
+                                    "NO USER",
+                                type: PTextType.h4,
+                                textColor: opaqueTextColor,
+                              ),
+                            ],
+                          ),
                           TypedBooleanWidget(
                               onPressed: () {
                                 capoAzzCallback.onBetValidityChanged(

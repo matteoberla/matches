@@ -192,8 +192,21 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            PalladioText(userBet.value ?? "???",
-                                type: PTextType.h3),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                PalladioText(
+                                    "${userBet.betNum}. ${userBet.value ?? "???"}",
+                                    type: PTextType.h3),
+                                PalladioText(
+                                  capoEuroHandler.getUsernameFromUserId(
+                                          context, userBet) ??
+                                      "NO USER",
+                                  type: PTextType.h4,
+                                  textColor: opaqueTextColor,
+                                ),
+                              ],
+                            ),
                             TypedBooleanWidget(
                                 onPressed: () {
                                   capoEuroCallback.onBetValidityChanged(

@@ -10,6 +10,7 @@ import 'package:matches/models/capo_euro_models/capo_euro_bet_model.dart';
 import 'package:matches/models/login_models/login_model.dart';
 import 'package:matches/state_management/capo_euro_provider/capo_euro_provider.dart';
 import 'package:matches/state_management/http_provider/http_provider.dart';
+import 'package:matches/state_management/points_provider/points_provider.dart';
 import 'package:provider/provider.dart';
 
 class CapoEuroHandler {
@@ -189,5 +190,13 @@ class CapoEuroHandler {
       httpProvider.updateLoadingState(false);
       return true;
     }
+  }
+
+  String? getUsernameFromUserId(BuildContext context, CapoEuroBet capoAzzBet) {
+    var pointsProvider = Provider.of<PointsProvider>(context, listen: false);
+    return pointsProvider.pointsList
+        .where((element) => element.userId == capoAzzBet.userId)
+        .firstOrNull
+        ?.username;
   }
 }
