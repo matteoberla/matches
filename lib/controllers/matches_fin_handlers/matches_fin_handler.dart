@@ -197,6 +197,11 @@ class MatchesFinHandler {
             leadingWidget: (element) {
               return TeamsHandler.getTeamFlag(element.keyInfo1);
             },
+            showTrailingIcon: (element) {
+              return (provider.selectedMatchBet?.idTeam1.toString() ==
+                      element.key ||
+                  provider.selectedMatchBet?.idTeam2.toString() == element.key);
+            },
             listOfItems: listItems,
             showScanButton: false,
           ),
@@ -229,6 +234,11 @@ class MatchesFinHandler {
             showLeadingWidget: (element) => true,
             leadingWidget: (element) {
               return TeamsHandler.getTeamFlag(element.keyInfo1);
+            },
+            showTrailingIcon: (element) {
+              return (provider.selectedMatchBet?.idTeam1.toString() ==
+                      element.key ||
+                  provider.selectedMatchBet?.idTeam2.toString() == element.key);
             },
             listOfItems: listItems,
             showScanButton: false,
