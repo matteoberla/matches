@@ -62,6 +62,10 @@ class PointsBottomSheetHandler {
                           points: userPoints.totalMatchesFinPoints,
                         ),
                         PointsRow(
+                          description: "Bonus migliori terze:",
+                          points: userPoints.totalMatchesFinBonusOttavi,
+                        ),
+                        PointsRow(
                           description: "Bonus quartifinaliste:",
                           points: userPoints.totalMatchesFinBonusQuarti,
                         ),

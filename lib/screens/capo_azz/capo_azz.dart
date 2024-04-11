@@ -94,7 +94,7 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                           PalladioText(
                             "Punti: ${capoAzzProvider.capoAzzBetList?[0].points}",
                             type: PTextType.h3,
-                            textColor: opaqueTextColor,
+                            textColor: interactiveColor,
                           ),
                         ],
                       ),
@@ -134,7 +134,7 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                           PalladioText(
                             "Punti: ${capoAzzProvider.capoAzzBetList?[1].points}",
                             type: PTextType.h3,
-                            textColor: opaqueTextColor,
+                            textColor: interactiveColor,
                           ),
                         ],
                       ),

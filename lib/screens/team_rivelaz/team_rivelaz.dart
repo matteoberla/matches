@@ -151,7 +151,7 @@ class _TeamRivelazPageState extends State<TeamRivelazPage> {
                             PalladioText(
                               "Punti: ${selectedTeamRivelazBet?.points}",
                               type: PTextType.h3,
-                              textColor: opaqueTextColor,
+                              textColor: interactiveColor,
                             ),
                           ],
                         ),

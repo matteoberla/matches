@@ -125,7 +125,7 @@ class MatchTile extends StatelessWidget {
                         PalladioText(
                           "Punti: ${matchBet?.points}",
                           type: PTextType.h3,
-                          textColor: opaqueTextColor,
+                          textColor: interactiveColor,
                         ),
                       ],
                     ),

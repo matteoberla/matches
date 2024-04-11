@@ -151,7 +151,7 @@ class _GoalVelocePageState extends State<GoalVelocePage> {
                             PalladioText(
                               "Punti: ${selectedGoalVeloceBet?.points}",
                               type: PTextType.h3,
-                              textColor: opaqueTextColor,
+                              textColor: interactiveColor,
                             ),
                           ],
                         ),

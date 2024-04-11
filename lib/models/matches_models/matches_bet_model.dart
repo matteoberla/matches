@@ -33,6 +33,7 @@ class MatchesBet {
   int? goalTeam2;
   String? result;
   int? points;
+  int? bonus;
 
   //
   TextEditingController goal1Controller = TextEditingController();
@@ -47,7 +48,8 @@ class MatchesBet {
       this.goalTeam1,
       this.goalTeam2,
       this.result,
-      this.points});
+      this.points,
+      this.bonus});
 
   MatchesBet.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -59,6 +61,7 @@ class MatchesBet {
     goalTeam2 = json['goal_team_2'];
     result = json['result'];
     points = json['points'];
+    bonus = json['bonus'];
   }
 
   Map<String, dynamic> toJson() {
@@ -72,6 +75,7 @@ class MatchesBet {
     data['goal_team_2'] = goalTeam2;
     data['result'] = result;
     data['points'] = points;
+    data['bonus'] = bonus;
     return data;
   }
 }

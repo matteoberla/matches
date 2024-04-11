@@ -186,25 +186,53 @@ class MatchFinTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Visibility(
-                    visible: matchBet?.points != null,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.control_point_duplicate_sharp,
-                          color: interactiveColor,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Visibility(
+                        visible: matchBet?.points != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.control_point_duplicate_sharp,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Punti: ${matchBet?.points}",
+                              type: PTextType.h3,
+                              textColor: interactiveColor,
+                            ),
+                          ],
                         ),
-                        const EmptySpace(
-                          width: 5,
+                      ),
+                      const EmptySpace(
+                        width: 5,
+                      ),
+                      Visibility(
+                        visible: matchBet?.bonus != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.local_fire_department_outlined,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Bonus: ${matchBet?.bonus}",
+                              type: PTextType.h3,
+                              textColor: interactiveColor,
+                            ),
+                          ],
                         ),
-                        PalladioText(
-                          "Punti: ${matchBet?.points}",
-                          type: PTextType.h3,
-                          textColor: opaqueTextColor,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   Visibility(
                     visible: matchBet == null ||

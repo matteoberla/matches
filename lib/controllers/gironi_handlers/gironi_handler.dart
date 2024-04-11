@@ -196,7 +196,7 @@ class GironiHandler {
                   PalladioText(
                     "Punti: ${gironeBet?.points}",
                     type: PTextType.h3,
-                    textColor: opaqueTextColor,
+                    textColor: interactiveColor,
                   ),
                 ],
               ),

@@ -27,189 +27,193 @@ class PalladioDrawer extends StatelessWidget {
           bottomRight: Radius.circular(15),
         ),
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PalladioText(
-                      currentUser?.name ?? "No user",
-                      textAlign: TextAlign.center,
-                      type: PTextType.h1,
-                      bold: true,
-                    ),
-                    PalladioText(
-                        "${pointsHandler.getCurrentUserPoints(context)?.totalPoints ?? "0"} Punti",
-                        type: PTextType.h3),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {
-                    drawerKey.currentState?.closeDrawer();
-                  },
-                ),
-              ],
-            ),
-          ),
-          const Divider(),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "matches.png",
-                    ),
-                    title: const PalladioText(
-                      "Fase a gironi",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onPartitePressed(context);
-                    },
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "gironi.png",
-                    ),
-                    title: const PalladioText(
-                      "Classifica gironi",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onGironiPressed(context);
-                    },
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "matches.png",
-                    ),
-                    title: const PalladioText(
-                      "Fase finale",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onPartiteFinaliPressed(context);
-                    },
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "matches.png",
-                    ),
-                    title: const PalladioText(
-                      "Goal veloce",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onGoalVelocePressed(context);
-                    },
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "team.png",
-                    ),
-                    title: const PalladioText(
-                      "Team rivelazione",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onTeamRivelazPressed(context);
-                    },
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "capo.png",
-                    ),
-                    title: const PalladioText(
-                      "Capocannoniere Euro",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onCapocannoniereEuroPressed(context);
-                    },
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const PalladioAssetImage(
-                      directory: "general",
-                      fileName: "capo.png",
-                    ),
-                    title: const PalladioText(
-                      "Capocannoniere Azzurro",
-                      type: PTextType.h3,
-                    ),
-                    onTap: () async {
-                      setupCallback.onCapocannoniereItaPressed(context);
-                    },
-                  ),
-                  if (loginHandler.currentUserIsAdmin(context)) const Divider(),
-                  if (loginHandler.currentUserIsAdmin(context))
-                    ListTile(
-                      leading: const PalladioAssetImage(
-                        directory: "general",
-                        fileName: "squadre.png",
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      PalladioText(
+                        currentUser?.name ?? "No user",
+                        textAlign: TextAlign.center,
+                        type: PTextType.h1,
+                        bold: true,
                       ),
-                      title: const PalladioText(
-                        "Squadre",
-                        type: PTextType.h3,
-                      ),
-                      onTap: () async {
-                        setupCallback.onSquadrePressed(context);
-                      },
-                    ),
-                  if (loginHandler.currentUserIsAdmin(context)) const Divider(),
-                  if (loginHandler.currentUserIsAdmin(context))
-                    ListTile(
-                      leading: const PalladioAssetImage(
-                        directory: "general",
-                        fileName: "class.png",
-                      ),
-                      title: const PalladioText(
-                        "Classifica",
-                        type: PTextType.h3,
-                      ),
-                      onTap: () async {
-                        setupCallback.onClassificaPressed(context);
-                      },
-                    ),
+                      PalladioText(
+                          "${pointsHandler.getCurrentUserPoints(context)?.totalPoints ?? "0"} Punti",
+                          type: PTextType.h3),
+                    ],
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.menu),
+                    onPressed: () {
+                      drawerKey.currentState?.closeDrawer();
+                    },
+                  ),
                 ],
               ),
             ),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const PalladioAssetImage(
-              directory: "general",
-              fileName: "settings.png",
+            const Divider(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "matches.png",
+                      ),
+                      title: const PalladioText(
+                        "Fase a gironi",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onPartitePressed(context);
+                      },
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "gironi.png",
+                      ),
+                      title: const PalladioText(
+                        "Classifica gironi",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onGironiPressed(context);
+                      },
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "matches.png",
+                      ),
+                      title: const PalladioText(
+                        "Fase finale",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onPartiteFinaliPressed(context);
+                      },
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "matches.png",
+                      ),
+                      title: const PalladioText(
+                        "Goal veloce",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onGoalVelocePressed(context);
+                      },
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "team.png",
+                      ),
+                      title: const PalladioText(
+                        "Team rivelazione",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onTeamRivelazPressed(context);
+                      },
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "capo.png",
+                      ),
+                      title: const PalladioText(
+                        "Capocannoniere Euro",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onCapocannoniereEuroPressed(context);
+                      },
+                    ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "capo.png",
+                      ),
+                      title: const PalladioText(
+                        "Capocannoniere Azzurro",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onCapocannoniereItaPressed(context);
+                      },
+                    ),
+                    if (loginHandler.currentUserIsAdmin(context))
+                      const Divider(),
+                    if (loginHandler.currentUserIsAdmin(context))
+                      ListTile(
+                        leading: const PalladioAssetImage(
+                          directory: "general",
+                          fileName: "squadre.png",
+                        ),
+                        title: const PalladioText(
+                          "Squadre",
+                          type: PTextType.h3,
+                        ),
+                        onTap: () async {
+                          setupCallback.onSquadrePressed(context);
+                        },
+                      ),
+                    if (loginHandler.currentUserIsAdmin(context))
+                      const Divider(),
+                    if (loginHandler.currentUserIsAdmin(context))
+                      ListTile(
+                        leading: const PalladioAssetImage(
+                          directory: "general",
+                          fileName: "class.png",
+                        ),
+                        title: const PalladioText(
+                          "Classifica",
+                          type: PTextType.h3,
+                        ),
+                        onTap: () async {
+                          setupCallback.onClassificaPressed(context);
+                        },
+                      ),
+                  ],
+                ),
+              ),
             ),
-            title: const PalladioText(
-              "Logout",
-              type: PTextType.h3,
+            const Divider(),
+            ListTile(
+              leading: const PalladioAssetImage(
+                directory: "general",
+                fileName: "settings.png",
+              ),
+              title: const PalladioText(
+                "Logout",
+                type: PTextType.h3,
+              ),
+              onTap: () async {
+                setupCallback.onLogoutPressed(context);
+              },
             ),
-            onTap: () async {
-              setupCallback.onLogoutPressed(context);
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

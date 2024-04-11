@@ -316,8 +316,21 @@ class MatchesFinHandler {
       MatchesFinProvider provider) async {
     MatchesBet? currentMatchBet = provider.selectedMatchBet;
 
+    bool missingTeam1 = currentMatchBet?.idTeam1 == null;
+    bool missingTeam2 = currentMatchBet?.idTeam2 == null;
+
     bool missingGoal1 = currentMatchBet?.goal1Controller.text == "";
     bool missingGoal2 = currentMatchBet?.goal2Controller.text == "";
+
+    if (missingTeam1) {
+      await Alerts.showInfoAlertNoContext("Attenzione", "Indicare squadra 1.");
+      return false;
+    }
+
+    if (missingTeam2) {
+      await Alerts.showInfoAlertNoContext("Attenzione", "Indicare squadra 2.");
+      return false;
+    }
 
     if (missingGoal1) {
       await Alerts.showInfoAlertNoContext(

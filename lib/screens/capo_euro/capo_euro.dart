@@ -95,7 +95,7 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                             PalladioText(
                               "Punti: ${capoEuroProvider.capoEuroBetList?[0].points}",
                               type: PTextType.h3,
-                              textColor: opaqueTextColor,
+                              textColor: interactiveColor,
                             ),
                           ],
                         ),
@@ -135,7 +135,7 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                             PalladioText(
                               "Punti: ${capoEuroProvider.capoEuroBetList?[1].points}",
                               type: PTextType.h3,
-                              textColor: opaqueTextColor,
+                              textColor: interactiveColor,
                             ),
                           ],
                         ),

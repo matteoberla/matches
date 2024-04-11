@@ -25,7 +25,7 @@ class _FatalErrorPageState extends State<FatalErrorPage> {
         leading: PalladioBackButton(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/setup', (route) => false);
+                context, '/login', (route) => false);
           },
         ),
       ),
