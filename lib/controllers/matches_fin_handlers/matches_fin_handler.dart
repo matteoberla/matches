@@ -417,8 +417,8 @@ class MatchesFinHandler {
 
     bool missingTeam1 = currentMatchBet?.idTeam1 == null;
     bool missingTeam2 = currentMatchBet?.idTeam2 == null;
-    bool missingGoal1 = currentMatchBet?.goal1Controller.text == "";
-    bool missingGoal2 = currentMatchBet?.goal2Controller.text == "";
+    //bool missingGoal1 = currentMatchBet?.goal1Controller.text == "";
+    //bool missingGoal2 = currentMatchBet?.goal2Controller.text == "";
 
     if (missingTeam1) {
       await Alerts.showInfoAlertNoContext(
@@ -432,6 +432,7 @@ class MatchesFinHandler {
       return false;
     }
 
+    /*
     if (missingGoal1) {
       await Alerts.showInfoAlertNoContext(
           "Attenzione", "Indicare i goal della squadra 1.");
@@ -442,7 +443,7 @@ class MatchesFinHandler {
       await Alerts.showInfoAlertNoContext(
           "Attenzione", "Indicare i goal della squadra 2.");
       return false;
-    }
+    }*/
 
     return true;
   }
