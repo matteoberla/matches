@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -73,5 +74,26 @@ class PointsHandler {
       return true;
     }
     return false;
+  }
+
+  String getUsersPoints(PointsProvider provider) {
+    String export = "Ecco la classifica:\n\n";
+
+    int pos = 1;
+    List<String> positionsEmoji = ["🥇", "🥈", "🥉"];
+    for (var userPoints in provider.pointsList) {
+      //esporto solo utenti attivi
+      if (userPoints.isActive == 1) {
+        if (pos <= 3) {
+          export += positionsEmoji[pos - 1];
+        } else {
+          export += pos.toString();
+        }
+        export += ". ${userPoints.username} ${userPoints.totalPoints} Pt\n";
+        pos++;
+      }
+    }
+
+    return export;
   }
 }

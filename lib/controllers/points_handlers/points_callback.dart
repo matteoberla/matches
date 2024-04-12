@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
 import 'package:matches/models/points_models/points_model.dart';
+import 'package:matches/state_management/points_provider/points_provider.dart';
 
 class PointsCallback {
   onUserPointsTap(BuildContext context, Points? userPoints) async {
@@ -17,5 +20,15 @@ class PointsCallback {
     if (success && context.mounted) {
       Navigator.of(context).pop();
     }
+  }
+
+  copyUserPoints(BuildContext context, PointsProvider provider) {
+    PointsHandler pointsHandler = PointsHandler();
+    Clipboard.setData(
+            ClipboardData(text: pointsHandler.getUsersPoints(provider)))
+        .then((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Classifica salvata negli appunti")));
+    });
   }
 }

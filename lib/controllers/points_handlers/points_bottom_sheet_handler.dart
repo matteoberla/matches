@@ -15,6 +15,8 @@ class PointsBottomSheetHandler {
     LoginHandler loginHandler = LoginHandler();
     PointsCallback pointsCallback = PointsCallback();
 
+    bool showOnlyToAdmin = loginHandler.currentUserIsAdmin(context);
+
     await showModalBottomSheet(
       backgroundColor: transparent,
       isScrollControlled: true,
@@ -38,10 +40,21 @@ class PointsBottomSheetHandler {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        PalladioText(
-                          userPoints.username ?? "",
-                          type: PTextType.h2,
-                          bold: true,
+                        Row(
+                          children: [
+                            PalladioText(
+                              userPoints.username ?? "",
+                              type: PTextType.h2,
+                              bold: true,
+                            ),
+                            if (showOnlyToAdmin)
+                              PalladioText(
+                                " (id: ${userPoints.userId?.toString()})",
+                                type: PTextType.h3,
+                                bold: true,
+                                textColor: interactiveColor,
+                              ),
+                          ],
                         ),
                         PointsRow(
                           description: "Totale:",
@@ -97,7 +110,7 @@ class PointsBottomSheetHandler {
                           height: 10,
                         ),
                         Visibility(
-                          visible: loginHandler.currentUserIsAdmin(context),
+                          visible: showOnlyToAdmin,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

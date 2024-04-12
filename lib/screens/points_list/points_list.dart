@@ -38,6 +38,14 @@ class _PointsListPageState extends State<PointsListPage> {
           },
           icon: const Icon(Icons.menu),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              pointsCallback.copyUserPoints(context, pointsProvider);
+            },
+            icon: const Icon(Icons.download),
+          )
+        ],
       ),
       body: PalladioBody(
         child: ListView.separated(
