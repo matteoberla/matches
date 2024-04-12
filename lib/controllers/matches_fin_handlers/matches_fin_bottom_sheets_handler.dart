@@ -11,6 +11,7 @@ import 'package:matches/components/typed_widgets_components/typed_action_button_
 import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/matches_fin_handlers/matches_fin_callback.dart';
 import 'package:matches/controllers/matches_fin_handlers/matches_fin_handler.dart';
+import 'package:matches/controllers/text_controller_handler.dart';
 import 'package:matches/models/login_models/login_model.dart';
 import 'package:matches/models/matches_models/matches_bet_model.dart';
 import 'package:matches/models/matches_models/matches_model.dart';
@@ -157,6 +158,10 @@ class MatchesFinBottomSheetsHandler {
                                         .onMatchBetGoalTeam1Changed(
                                             provider, newText);
                                   },
+                                  onTap: () {
+                                    TextControllerHandler.moveCursorToEnd(
+                                        selectedMatchBet?.goal1Controller);
+                                  },
                                 ),
                               ),
                               const EmptySpace(
@@ -181,6 +186,10 @@ class MatchesFinBottomSheetsHandler {
                                     matchesFinCallback
                                         .onMatchBetGoalTeam2Changed(
                                             provider, newText);
+                                  },
+                                  onTap: () {
+                                    TextControllerHandler.moveCursorToEnd(
+                                        selectedMatchBet?.goal2Controller);
                                   },
                                 ),
                               ),
@@ -317,6 +326,10 @@ class MatchesFinBottomSheetsHandler {
                                     matchesFinCallback.onMatchGoalTeam1Changed(
                                         provider, newText);
                                   },
+                                  onTap: () {
+                                    TextControllerHandler.moveCursorToEnd(
+                                        selectedMatch.goal1Controller);
+                                  },
                                 ),
                               ),
                               const EmptySpace(
@@ -338,6 +351,10 @@ class MatchesFinBottomSheetsHandler {
                                   onChanged: (newText) {
                                     matchesFinCallback.onMatchGoalTeam2Changed(
                                         provider, newText);
+                                  },
+                                  onTap: () {
+                                    TextControllerHandler.moveCursorToEnd(
+                                        selectedMatch.goal2Controller);
                                   },
                                 ),
                               ),
