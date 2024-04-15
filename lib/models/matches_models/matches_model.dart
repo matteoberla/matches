@@ -35,6 +35,7 @@ class Matches {
   String? des1;
   String? des2;
   String? result;
+  String? finalResult;
 
   //
   TextEditingController goal1Controller = TextEditingController();
@@ -68,6 +69,7 @@ class Matches {
     des1 = json['des_1'];
     des2 = json['des_2'];
     result = json['result'];
+    finalResult = json['final_result'];
   }
 
   Map<String, dynamic> toJson() {
@@ -83,6 +85,7 @@ class Matches {
     data['des_1'] = des1;
     data['des_2'] = des2;
     data['result'] = result;
+    data['final_result'] = finalResult;
     return data;
   }
 }

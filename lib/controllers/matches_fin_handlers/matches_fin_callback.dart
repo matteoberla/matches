@@ -74,6 +74,14 @@ class MatchesFinCallback {
     matchesFinHandler.calcPronosticoOfSelectedMatch(provider);
   }
 
+  onMatchBetFinalResultChanged(MatchesFinProvider provider, bool newState) {
+    provider.updateFinalResultOfSelectedMatchBet(newState ? "2" : "1");
+  }
+
+  onMatchFinalResultChanged(MatchesFinProvider provider, bool newState) {
+    provider.updateFinalResultOfSelectedMatch(newState ? "2" : "1");
+  }
+
   onMatchBetSaved(BuildContext context, MatchesFinProvider provider) async {
     //check data scadenza
     LoginHandler loginHandler = LoginHandler();

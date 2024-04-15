@@ -114,11 +114,17 @@ class MatchesFinHandler {
 
     if (goalTeam1 != null && goalTeam2 != null) {
       if (goalTeam1 > goalTeam2) {
-        return provider.updateResultOfSelectedMatchBet("1");
+        provider.updateResultOfSelectedMatchBet("1");
+        provider.updateFinalResultOfSelectedMatchBet(null);
+        return;
       } else if (goalTeam1 < goalTeam2) {
-        return provider.updateResultOfSelectedMatchBet("2");
+        provider.updateResultOfSelectedMatchBet("2");
+        provider.updateFinalResultOfSelectedMatchBet(null);
+        return;
       } else {
-        return provider.updateResultOfSelectedMatchBet("X");
+        provider.updateResultOfSelectedMatchBet("X");
+        provider.updateFinalResultOfSelectedMatchBet("1");
+        return;
       }
     } else {
       return provider.updateResultOfSelectedMatchBet(null);
@@ -135,11 +141,17 @@ class MatchesFinHandler {
 
     if (goalTeam1 != null && goalTeam2 != null) {
       if (goalTeam1 > goalTeam2) {
-        return provider.updateResultOfSelectedMatch("1");
+        provider.updateResultOfSelectedMatch("1");
+        provider.updateFinalResultOfSelectedMatch(null);
+        return;
       } else if (goalTeam1 < goalTeam2) {
-        return provider.updateResultOfSelectedMatch("2");
+        provider.updateResultOfSelectedMatch("2");
+        provider.updateFinalResultOfSelectedMatch(null);
+        return;
       } else {
-        return provider.updateResultOfSelectedMatch("X");
+        provider.updateResultOfSelectedMatch("X");
+        provider.updateFinalResultOfSelectedMatch("1");
+        return;
       }
     } else {
       return provider.updateResultOfSelectedMatch(null);

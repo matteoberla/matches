@@ -48,6 +48,11 @@ class MatchesFinProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  updateFinalResultOfSelectedMatch(String? newResult) {
+    selectedMatch?.finalResult = newResult;
+    notifyListeners();
+  }
+
   ///lista scommesse partite
   List<MatchesBet> matchesBetList = [];
 
@@ -85,6 +90,11 @@ class MatchesFinProvider extends ChangeNotifier {
   updateResultOfSelectedMatchBet(String? result) {
     selectedMatchBet?.result = result;
     //print(result);
+    notifyListeners();
+  }
+
+  updateFinalResultOfSelectedMatchBet(String? newResult) {
+    selectedMatchBet?.finalResult = newResult;
     notifyListeners();
   }
 }

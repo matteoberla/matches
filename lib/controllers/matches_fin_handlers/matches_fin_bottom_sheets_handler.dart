@@ -199,6 +199,50 @@ class MatchesFinBottomSheetsHandler {
                         const EmptySpace(
                           height: 10,
                         ),
+                        if (matchesFinProvider.selectedMatchBet?.result == "X")
+                          Column(
+                            children: [
+                              const PalladioText(
+                                "Vincente",
+                                type: PTextType.h2,
+                                bold: true,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  PalladioText(
+                                    "Squadra 1",
+                                    type: PTextType.h3,
+                                    bold: matchesFinProvider
+                                            .selectedMatchBet?.finalResult ==
+                                        "1",
+                                  ),
+                                  Switch(
+                                    value: matchesFinProvider
+                                            .selectedMatchBet?.finalResult ==
+                                        "2",
+                                    onChanged: (newState) {
+                                      matchesFinCallback
+                                          .onMatchBetFinalResultChanged(
+                                              provider, newState);
+                                    },
+                                    activeColor: interactiveColor,
+                                    inactiveThumbColor: interactiveColor,
+                                  ),
+                                  PalladioText(
+                                    "Squadra 2",
+                                    type: PTextType.h3,
+                                    bold: matchesFinProvider
+                                            .selectedMatchBet?.finalResult ==
+                                        "2",
+                                  ),
+                                ],
+                              ),
+                              const EmptySpace(
+                                height: 10,
+                              ),
+                            ],
+                          ),
                         PalladioRowActionButtons(
                           onExit: () {
                             Navigator.of(matchBetContext).pop();
@@ -364,6 +408,50 @@ class MatchesFinBottomSheetsHandler {
                         const EmptySpace(
                           height: 10,
                         ),
+                        if (matchesFinProvider.selectedMatch?.result == "X")
+                          Column(
+                            children: [
+                              const PalladioText(
+                                "Vincente",
+                                type: PTextType.h2,
+                                bold: true,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  PalladioText(
+                                    "Squadra 1",
+                                    type: PTextType.h3,
+                                    bold: matchesFinProvider
+                                            .selectedMatch?.finalResult ==
+                                        "1",
+                                  ),
+                                  Switch(
+                                    value: matchesFinProvider
+                                            .selectedMatch?.finalResult ==
+                                        "2",
+                                    onChanged: (newState) {
+                                      matchesFinCallback
+                                          .onMatchFinalResultChanged(
+                                              provider, newState);
+                                    },
+                                    activeColor: interactiveColor,
+                                    inactiveThumbColor: interactiveColor,
+                                  ),
+                                  PalladioText(
+                                    "Squadra 2",
+                                    type: PTextType.h3,
+                                    bold: matchesFinProvider
+                                            .selectedMatch?.finalResult ==
+                                        "2",
+                                  ),
+                                ],
+                              ),
+                              const EmptySpace(
+                                height: 10,
+                              ),
+                            ],
+                          ),
                         PalladioRowActionButtons(
                           onExit: () {
                             Navigator.of(matchBetContext).pop();

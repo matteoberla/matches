@@ -32,6 +32,7 @@ class MatchesBet {
   int? goalTeam1;
   int? goalTeam2;
   String? result;
+  String? finalResult;
   int? points;
   int? bonus;
 
@@ -48,6 +49,7 @@ class MatchesBet {
       this.goalTeam1,
       this.goalTeam2,
       this.result,
+        this.finalResult,
       this.points,
       this.bonus});
 
@@ -60,6 +62,7 @@ class MatchesBet {
     goalTeam1 = json['goal_team_1'];
     goalTeam2 = json['goal_team_2'];
     result = json['result'];
+    finalResult = json['final_result'];
     points = json['points'];
     bonus = json['bonus'];
   }
@@ -74,6 +77,7 @@ class MatchesBet {
     data['goal_team_1'] = goalTeam1;
     data['goal_team_2'] = goalTeam2;
     data['result'] = result;
+    data['final_result'] = finalResult;
     data['points'] = points;
     data['bonus'] = bonus;
     return data;
