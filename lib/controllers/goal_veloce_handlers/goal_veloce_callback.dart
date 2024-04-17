@@ -15,18 +15,17 @@ class GoalVeloceCallback {
   }
 
   onSaveBetPressed(BuildContext context, GoalVeloceProvider provider) async {
-    GoalVeloceHandler goalVeloceHandler = GoalVeloceHandler();
-    await goalVeloceHandler.verifyGoalVeloceBet(context, provider);
+    LoginHandler loginHandler = LoginHandler();
+    bool editable = await loginHandler.resultCanBeEdited(context);
+    if (editable && context.mounted) {
+      GoalVeloceHandler goalVeloceHandler = GoalVeloceHandler();
+      await goalVeloceHandler.verifyGoalVeloceBet(context, provider);
+    }
   }
 
   onSavePressed(BuildContext context, GoalVeloceProvider provider) async {
-    LoginHandler loginHandler = LoginHandler();
-    bool editable = await loginHandler.resultCanBeEdited(context);
-
-    if (editable && context.mounted) {
-      GoalVeloceHandler goalVeloceHandler = GoalVeloceHandler();
-      await goalVeloceHandler.verifyGoalVeloce(context, provider);
-    }
+    GoalVeloceHandler goalVeloceHandler = GoalVeloceHandler();
+    await goalVeloceHandler.verifyGoalVeloce(context, provider);
   }
 
   onImpostaRisultatoPressed(BuildContext context, GoalVeloceProvider provider) {

@@ -15,18 +15,17 @@ class TeamRivelazCallback {
   }
 
   onSaveBetPressed(BuildContext context, TeamRivelazProvider provider) async {
-    TeamRivelazHandler teamRivelazHandler = TeamRivelazHandler();
-    await teamRivelazHandler.verifyTeamRivelazBet(context, provider);
+    LoginHandler loginHandler = LoginHandler();
+    bool editable = await loginHandler.resultCanBeEdited(context);
+    if (editable && context.mounted) {
+      TeamRivelazHandler teamRivelazHandler = TeamRivelazHandler();
+      await teamRivelazHandler.verifyTeamRivelazBet(context, provider);
+    }
   }
 
   onSavePressed(BuildContext context, TeamRivelazProvider provider) async {
-    LoginHandler loginHandler = LoginHandler();
-    bool editable = await loginHandler.resultCanBeEdited(context);
-
-    if (editable && context.mounted) {
-      TeamRivelazHandler teamRivelazHandler = TeamRivelazHandler();
-      await teamRivelazHandler.verifyTeamRivelaz(context, provider);
-    }
+    TeamRivelazHandler teamRivelazHandler = TeamRivelazHandler();
+    await teamRivelazHandler.verifyTeamRivelaz(context, provider);
   }
 
   onImpostaRisultatoPressed(

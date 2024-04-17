@@ -169,10 +169,6 @@ class GoalVeloceHandler {
       if (context.mounted) {
         await saveAllGoalVeloceBet(context);
       }
-      if (context.mounted) {
-        PointsHandler pointsHandler = PointsHandler();
-        await pointsHandler.saveAllPoints(context);
-      }
       httpProvider.updateLoadingState(false);
 
       return true;
@@ -262,6 +258,9 @@ class GoalVeloceHandler {
       httpProvider.updateLoadingState(true);
       if (context.mounted) {
         await saveAllGoalVeloce(context);
+      }
+      if (context.mounted) {
+        await saveAllGoalVeloceBet(context);
       }
       if (context.mounted) {
         PointsHandler pointsHandler = PointsHandler();

@@ -170,10 +170,6 @@ class TeamRivelazHandler {
       if (context.mounted) {
         await saveAllTeamRivelazBet(context);
       }
-      if (context.mounted) {
-        PointsHandler pointsHandler = PointsHandler();
-        await pointsHandler.saveAllPoints(context);
-      }
       httpProvider.updateLoadingState(false);
 
       return true;
@@ -263,6 +259,9 @@ class TeamRivelazHandler {
       httpProvider.updateLoadingState(true);
       if (context.mounted) {
         await saveAllTeamRivelaz(context);
+      }
+      if (context.mounted) {
+        await saveAllTeamRivelazBet(context);
       }
       if (context.mounted) {
         PointsHandler pointsHandler = PointsHandler();
