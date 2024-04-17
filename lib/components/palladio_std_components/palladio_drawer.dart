@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:matches/components/palladio_std_components/palladio_asset_image.dart';
 import 'package:matches/components/palladio_std_components/palladio_text.dart';
 import 'package:matches/controllers/login_handlers/login_handler.dart';
+import 'package:matches/controllers/points_handlers/points_callback.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
 import 'package:matches/controllers/setup_handlers/setup_callback.dart';
 import 'package:matches/models/login_models/login_model.dart';
+import 'package:matches/models/points_models/points_model.dart';
+import 'package:matches/styles.dart';
 
 class PalladioDrawer extends StatelessWidget {
   PalladioDrawer({super.key, required this.drawerKey});
@@ -19,6 +23,8 @@ class PalladioDrawer extends StatelessWidget {
     LoginModel? currentUser = loginHandler.getCurrentUser(context);
     //
     PointsHandler pointsHandler = PointsHandler();
+    PointsCallback pointsCallback = PointsCallback();
+    Points? currentPoints = pointsHandler.getCurrentUserPoints(context);
 
     return Drawer(
       shape: const RoundedRectangleBorder(
@@ -35,20 +41,29 @@ class PalladioDrawer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      PalladioText(
-                        currentUser?.name ?? "No user",
-                        textAlign: TextAlign.center,
-                        type: PTextType.h1,
-                        bold: true,
+                  GestureDetector(
+                    onTap: () {
+                      drawerKey.currentState!.closeDrawer();
+                      pointsCallback.onUserPointsTap(context, currentPoints);
+                    },
+                    child: Container(
+                      color: transparent,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PalladioText(
+                            currentUser?.name ?? "No user",
+                            textAlign: TextAlign.center,
+                            type: PTextType.h1,
+                            bold: true,
+                          ),
+                          PalladioText(
+                              "${pointsHandler.getCurrentUserPoints(context)?.totalPoints ?? "0"} Punti",
+                              type: PTextType.h3),
+                        ],
                       ),
-                      PalladioText(
-                          "${pointsHandler.getCurrentUserPoints(context)?.totalPoints ?? "0"} Punti",
-                          type: PTextType.h3),
-                    ],
+                    ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.menu),
