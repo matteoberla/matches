@@ -71,6 +71,18 @@ class LoginHandler {
       LoginModel loginModel =
           LoginModel.fromJson(json.decode(loginResponse.body));
 
+      bool validAppVersion = await checkAppVer(loginModel.appVer);
+      if (!validAppVersion) {
+        print("Versione app NON valida: ${loginModel.appVer}");
+        if (context.mounted) {
+          Navigator.popUntil(
+              context, (route) => route.settings.name == '/login');
+        }
+        return false;
+      } else {
+        print("Versione app valida: ${loginModel.appVer}");
+      }
+
       if (loginModel.message == null) {
         //salvo dati di accesso
         httpProvider.updateLoadingState(true);
@@ -155,6 +167,15 @@ class LoginHandler {
 
   Future<bool> resultCanBeEdited(BuildContext context) async {
     LoginModel? currentUser = getCurrentUser(context);
+
+    bool validAppVer = await checkAppVer(currentUser?.appVer);
+    if (!validAppVer) {
+      if (context.mounted) {
+        Navigator.popUntil(context, (route) => route.settings.name == '/login');
+      }
+      return false;
+    }
+
     if (currentUser != null) {
       DateTime? dtScad = DateTimeHandler.getDateTimeFromString(
           currentUser.dtScadenza, DateFormatType.dateAndTime);
@@ -175,5 +196,17 @@ class LoginHandler {
       }
     }
     return false;
+  }
+
+  Future<bool> checkAppVer(int? loginAppVer) async {
+    //TODO aggiornare app_ver corrente
+    int currentAppVer = 1;
+    //
+    if (loginAppVer == null || currentAppVer != loginAppVer) {
+      await Alerts.showErrorAlertNoContext("Attenzione",
+          "E' stata rilevata una versione più recente dell'app.\nCancellare la cronologia/cookie e ricaricare la pagina per proseguire");
+      return false;
+    }
+    return true;
   }
 }

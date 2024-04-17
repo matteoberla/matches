@@ -6,6 +6,7 @@ class LoginModel {
   String? password;
   int? admin;
   String? dtScadenza;
+  int? appVer;
   String? message;
 
   LoginModel(
@@ -16,6 +17,7 @@ class LoginModel {
       this.password,
       this.admin,
       this.dtScadenza,
+      this.appVer,
       this.message});
 
   LoginModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class LoginModel {
     password = json['password'];
     admin = json['admin'];
     dtScadenza = json['dt_scadenza'];
+    appVer = json['app_ver'];
     message = json['message'];
   }
 
@@ -38,6 +41,7 @@ class LoginModel {
     data['password'] = password;
     data['admin'] = admin;
     data['dt_scadenza'] = dtScadenza;
+    data['app_ver'] = appVer;
     data['message'] = message;
     return data;
   }
