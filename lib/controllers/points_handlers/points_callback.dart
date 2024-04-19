@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
 import 'package:matches/models/points_models/points_model.dart';
 import 'package:matches/state_management/points_provider/points_provider.dart';
@@ -29,5 +30,13 @@ class PointsCallback {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Classifica salvata negli appunti")));
     });
+  }
+
+  impersonaUtente(BuildContext context, Points userPoints) async {
+    LoginHandler loginHandler = LoginHandler();
+
+    if (userPoints.userId != null) {
+      await loginHandler.impersonaUtente(context, userPoints.userId!);
+    }
   }
 }

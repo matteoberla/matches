@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:matches/components/empty_space.dart';
 import 'package:matches/components/palladio_std_components/palladio_action_button.dart';
 import 'package:matches/components/palladio_std_components/palladio_body.dart';
+import 'package:matches/components/palladio_std_components/palladio_icon_button.dart';
 import 'package:matches/components/palladio_std_components/palladio_text.dart';
 import 'package:matches/components/points_components/points_row.dart';
 import 'package:matches/components/typed_widgets_components/typed_boolean_widget.dart';
@@ -111,20 +112,44 @@ class PointsBottomSheetHandler {
                         ),
                         Visibility(
                           visible: showOnlyToAdmin,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const PalladioText(
-                                "Utente attivo:",
-                                type: PTextType.h2,
-                                bold: true,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const PalladioText(
+                                    "Utente attivo:",
+                                    type: PTextType.h2,
+                                    bold: true,
+                                  ),
+                                  TypedBooleanWidget(
+                                      onPressed: () async {
+                                        await pointsCallback.onToggleUserStatus(
+                                            pointsContext, userPoints);
+                                      },
+                                      status: userPoints.isActive == 1),
+                                ],
                               ),
-                              TypedBooleanWidget(
-                                  onPressed: () async {
-                                    await pointsCallback.onToggleUserStatus(
-                                        pointsContext, userPoints);
-                                  },
-                                  status: userPoints.isActive == 1),
+                              const EmptySpace(
+                                height: 8,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  PalladioIconButton(
+                                    title: "Impersona",
+                                    icon: Icons.supervised_user_circle,
+                                    onPressed: () {
+                                      pointsCallback.impersonaUtente(
+                                          context, userPoints);
+                                    },
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),

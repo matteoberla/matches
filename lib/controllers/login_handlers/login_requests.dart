@@ -40,4 +40,21 @@ class LoginRequests {
 
     return response;
   }
+
+  Future impersona(Map<String, String> params) async {
+    var authHeader = await HttpHandler.getAuthorizationHeader();
+
+    Map<String, String> headers = {};
+    headers.addAll(authHeader);
+
+    var body = json.encode(params);
+
+    http.Response response = await HttpHandler.post(
+        Uri.parse('${await HttpHandler.endpoint}/impersona'),
+        headers: headers,
+        body: body,
+        debugPrint: false);
+
+    return response;
+  }
 }

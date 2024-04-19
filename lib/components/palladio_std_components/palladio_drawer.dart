@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:matches/components/palladio_std_components/palladio_asset_image.dart';
 import 'package:matches/components/palladio_std_components/palladio_text.dart';
 import 'package:matches/controllers/login_handlers/login_handler.dart';

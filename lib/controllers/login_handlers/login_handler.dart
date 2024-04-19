@@ -9,6 +9,7 @@ import 'package:matches/controllers/date_time_handler.dart';
 import 'package:matches/controllers/fasi_handlers/fasi_handler.dart';
 import 'package:matches/controllers/gironi_handlers/gironi_handler.dart';
 import 'package:matches/controllers/goal_veloce_handlers/goal_veloce_handler.dart';
+import 'package:matches/controllers/login_handlers/login_callback.dart';
 import 'package:matches/controllers/login_handlers/login_requests.dart';
 import 'package:matches/controllers/matches_fin_handlers/matches_fin_handler.dart';
 import 'package:matches/controllers/matches_handlers/matches_handler.dart';
@@ -52,7 +53,8 @@ class LoginHandler {
     }
   }
 
-  Future<bool> tryLogin(BuildContext context, LoginProvider provider) async {
+  Future<bool> tryLogin(BuildContext context, LoginProvider provider,
+      {bool impersona = false}) async {
     var httpProvider = Provider.of<HttpProvider>(context, listen: false);
 
     httpProvider.updateLoadingState(true);
@@ -61,7 +63,8 @@ class LoginHandler {
 
     Map<String, String> params = {
       "email": provider.username,
-      "password": provider.password
+      "password": provider.password,
+      "impersona": impersona.toString()
     };
 
     http.Response loginResponse = await loginRequests.login(params);
@@ -108,6 +111,38 @@ class LoginHandler {
       }
     }
     return false;
+  }
+
+  impersonaUtente(BuildContext context, int userId) async {
+    var httpProvider = Provider.of<HttpProvider>(context, listen: false);
+
+    httpProvider.updateLoadingState(true);
+
+    LoginRequests loginRequests = LoginRequests();
+
+    Map<String, String> params = {
+      "id": userId.toString(),
+      "impersona": true.toString()
+    };
+
+    http.Response impersonaResponse = await loginRequests.impersona(params);
+
+    httpProvider.updateLoadingState(false);
+
+    if (impersonaResponse.statusCode == 200) {
+      LoginModel loginModel =
+          LoginModel.fromJson(json.decode(impersonaResponse.body));
+
+      LoginCallback loginCallback = LoginCallback();
+      if (loginModel.email != null &&
+          loginModel.password != null &&
+          context.mounted) {
+        var loginProvider = Provider.of<LoginProvider>(context, listen: false);
+        await loginCallback.loginPressed(
+            context, loginProvider, loginModel.email!, loginModel.password!,
+            impersona: true);
+      }
+    }
   }
 
   Future<bool> initializeAllData(
@@ -162,7 +197,8 @@ class LoginHandler {
   }
 
   bool currentUserIsAdmin(BuildContext context) {
-    return getCurrentUser(context)?.admin == 1;
+    return getCurrentUser(context)?.admin == 1 ||
+        getCurrentUser(context)?.impersona == true;
   }
 
   Future<bool> resultCanBeEdited(BuildContext context) async {

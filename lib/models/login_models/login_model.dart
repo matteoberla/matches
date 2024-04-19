@@ -8,6 +8,7 @@ class LoginModel {
   String? dtScadenza;
   int? appVer;
   String? message;
+  bool? impersona;
 
   LoginModel(
       {this.token,
@@ -18,7 +19,8 @@ class LoginModel {
       this.admin,
       this.dtScadenza,
       this.appVer,
-      this.message});
+      this.message,
+      this.impersona});
 
   LoginModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
@@ -30,6 +32,7 @@ class LoginModel {
     dtScadenza = json['dt_scadenza'];
     appVer = json['app_ver'];
     message = json['message'];
+    impersona = json['impersona'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +46,7 @@ class LoginModel {
     data['dt_scadenza'] = dtScadenza;
     data['app_ver'] = appVer;
     data['message'] = message;
+    data['impersona'] = impersona;
     return data;
   }
 }
