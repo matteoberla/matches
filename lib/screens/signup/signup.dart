@@ -20,6 +20,8 @@ class _SignupPageState extends State<SignupPage> {
   final nicknameController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  //
+  bool showPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,17 @@ class _SignupPageState extends State<SignupPage> {
                   LoginInfoTextfield(
                     controller: passwordController,
                     hintText: 'Password',
-                    obscureText: true,
+                    obscureText: !showPassword,
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.visibility),
+                      onPressed: () {
+                        setState(
+                          () {
+                            showPassword = !showPassword;
+                          },
+                        );
+                      },
+                    ),
                   ),
 
                   const SizedBox(height: 25),

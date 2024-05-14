@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         // The Mandy red, dark theme.
         darkTheme: Styles.themeData(false, context),
         // Use dark or light theme based on system setting.
-        themeMode: ThemeMode.system,
+        themeMode: ThemeMode.light,
         home: const LoginPage(),
         navigatorKey: navigatorKey,
         routes: routes,

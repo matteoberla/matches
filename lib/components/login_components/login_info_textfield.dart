@@ -5,24 +5,29 @@ class LoginInfoTextfield extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final List<String>? autofillHints;
+  final Widget? suffixIcon;
 
-  const LoginInfoTextfield({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    required this.obscureText,
-  });
+  const LoginInfoTextfield(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      required this.obscureText,
+      this.autofillHints,
+      this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextField(
+        autofillHints: autofillHints,
         enableSuggestions: false,
         autocorrect: false,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.white),
             borderRadius: BorderRadius.circular(10),
