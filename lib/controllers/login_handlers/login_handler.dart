@@ -74,19 +74,19 @@ class LoginHandler {
       LoginModel loginModel =
           LoginModel.fromJson(json.decode(loginResponse.body));
 
-      bool validAppVersion = await checkAppVer(loginModel.appVer);
-      if (!validAppVersion) {
-        print("Versione app NON valida: ${loginModel.appVer}");
-        if (context.mounted) {
-          Navigator.popUntil(
-              context, (route) => route.settings.name == '/login');
-        }
-        return false;
-      } else {
-        print("Versione app valida: ${loginModel.appVer}");
-      }
-
       if (loginModel.message == null) {
+        bool validAppVersion = await checkAppVer(loginModel.appVer);
+        if (!validAppVersion) {
+          print("Versione app NON valida: ${loginModel.appVer}");
+          if (context.mounted) {
+            Navigator.popUntil(
+                context, (route) => route.settings.name == '/login');
+          }
+          return false;
+        } else {
+          print("Versione app valida: ${loginModel.appVer}");
+        }
+
         //salvo dati di accesso
         httpProvider.updateLoadingState(true);
         await LoginSharedPreferences.saveAccessInformation(loginModel.token);
