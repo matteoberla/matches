@@ -62,4 +62,10 @@ class GironiCallback {
     GironiHandler gironiHandler = GironiHandler();
     await gironiHandler.showGironeBottomSheet(context, provider, girone);
   }
+
+  onCompilaGironePressed(BuildContext context, GironiProvider provider,
+      Gironi girone, GironiBet? gironeBet) async {
+    GironiHandler gironiHandler = GironiHandler();
+    await gironiHandler.autocompilaGirone(context, provider, girone, gironeBet);
+  }
 }

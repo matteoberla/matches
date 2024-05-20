@@ -11,6 +11,7 @@ import 'package:matches/controllers/gironi_handlers/gironi_callback.dart';
 import 'package:matches/controllers/gironi_handlers/gironi_requests.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
 import 'package:matches/controllers/teams_handlers/teams_handler.dart';
+import 'package:matches/models/gironi_models/compila_girone_model.dart';
 import 'package:matches/models/gironi_models/gironi_bet_model.dart';
 import 'package:matches/models/gironi_models/gironi_model.dart';
 import 'package:matches/models/teams_models/teams_model.dart';
@@ -461,9 +462,8 @@ class GironiHandler {
 
     GironiRequests gironiRequests = GironiRequests();
 
-    http.Response deleteMatchResponse;
-
-    deleteMatchResponse = await gironiRequests.deleteGirone(girone);
+    http.Response deleteMatchResponse =
+        await gironiRequests.deleteGirone(girone);
 
     httpProvider.updateLoadingState(false);
     if (deleteMatchResponse.statusCode == 200) {
@@ -479,5 +479,51 @@ class GironiHandler {
     }
 
     return false;
+  }
+
+  ///
+  autocompilaGirone(BuildContext context, GironiProvider provider,
+      Gironi girone, GironiBet? gironeBet) async {
+    var httpProvider = Provider.of<HttpProvider>(context, listen: false);
+
+    httpProvider.updateLoadingState(true);
+
+    GironiRequests gironiRequests = GironiRequests();
+
+    String? gironeCode = girone.girone?.split(" ").last;
+
+    if (gironeCode == null) {
+      return;
+    }
+
+    http.Response compileGironeResponse =
+        await gironiRequests.getAutocompilazioneGironi(gironeCode, null);
+
+    httpProvider.updateLoadingState(false);
+
+    if (compileGironeResponse.statusCode == 200) {
+      for (var posGirone in json.decode(compileGironeResponse.body)) {
+        CompilaGironeModel compilaGirone =
+            CompilaGironeModel.fromJson(posGirone);
+        //compilazione automatica
+        compilaSquadra(girone, gironeBet, compilaGirone);
+      }
+    }
+  }
+
+  compilaSquadra(
+      Gironi girone, GironiBet? gironeBet, CompilaGironeModel compilaGirone) {
+    if (girone.idTeam1 == compilaGirone.teamId) {
+      gironeBet?.pos1Controller.text = compilaGirone.pos.toString();
+    }
+    if (girone.idTeam2 == compilaGirone.teamId) {
+      gironeBet?.pos2Controller.text = compilaGirone.pos.toString();
+    }
+    if (girone.idTeam3 == compilaGirone.teamId) {
+      gironeBet?.pos3Controller.text = compilaGirone.pos.toString();
+    }
+    if (girone.idTeam4 == compilaGirone.teamId) {
+      gironeBet?.pos4Controller.text = compilaGirone.pos.toString();
+    }
   }
 }

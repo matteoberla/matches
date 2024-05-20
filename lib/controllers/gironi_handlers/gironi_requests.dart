@@ -21,6 +21,22 @@ class GironiRequests {
     return response;
   }
 
+  Future getAutocompilazioneGironi(
+      String gironeCode, Map<String, String>? params) async {
+    var authHeader = await HttpHandler.getAuthorizationHeader();
+
+    Map<String, String> headers = {};
+    headers.addAll(authHeader);
+
+    print(headers);
+
+    http.Response response = await HttpHandler.get(HttpHandler.ipServer,
+        "${HttpHandler.apiPath}/compila_gironi/$gironeCode",
+        headers: headers, queryParameters: params, debugPrint: false);
+
+    return response;
+  }
+
   insertGirone(Gironi newGironi) async {
     var authHeader = await HttpHandler.getAuthorizationHeader();
 
