@@ -94,23 +94,19 @@ class GironiBottomSheetsHandler {
                           girone: selectedGirone,
                           activeActions: false,
                         ),
-                        Visibility(
-                          visible:
-                              loginHandler.currentUserIsAdmin(gironiBetContext),
-                          child: Row(
-                            children: [
-                              PalladioActionButton(
-                                  title: "Compila girone",
-                                  onTap: () async {
-                                    await gironiCallback.onCompilaGironePressed(
-                                        context,
-                                        gironiProvider,
-                                        selectedGirone,
-                                        selectedGironeBet);
-                                  },
-                                  backgroundColor: interactiveColor),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            PalladioActionButton(
+                                title: "Compila girone",
+                                onTap: () async {
+                                  await gironiCallback.onCompilaGironePressed(
+                                      context,
+                                      gironiProvider,
+                                      selectedGirone,
+                                      selectedGironeBet);
+                                },
+                                backgroundColor: interactiveColor),
+                          ],
                         ),
                         const PalladioText(
                           "Il tuo risultato",
