@@ -23,7 +23,7 @@ class TeamFlagName extends StatelessWidget {
         children: [
           if (nameOnLeft)
             PalladioText(
-              team?.name?.substring(0, 3).toUpperCase() ?? "???",
+              team?.breve ?? "???",
               type: PTextType.h2,
               bold: true,
               maxLines: 1,
@@ -39,7 +39,7 @@ class TeamFlagName extends StatelessWidget {
             ),
           if (!nameOnLeft)
             PalladioText(
-              team?.name?.substring(0, 3).toUpperCase() ?? "???",
+              team?.breve ?? "???",
               type: PTextType.h2,
               bold: true,
               maxLines: 1,

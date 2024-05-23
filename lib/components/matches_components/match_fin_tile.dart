@@ -179,7 +179,7 @@ class MatchFinTile extends StatelessWidget {
                           color: successColor,
                         ),
                         PalladioText(
-                          "Risultato ${match.goalTeam1 != null && match.goalTeam2 != null ? "fin. (${team1?.name?.substring(0, 3).toUpperCase()} ${match.goalTeam1} : ${team2?.name?.substring(0, 3).toUpperCase()} ${match.goalTeam2})" : "inserito"}",
+                          "Risultato ${match.goalTeam1 != null && match.goalTeam2 != null ? "fin. (${team1?.breve} ${match.goalTeam1} : ${team2?.breve} ${match.goalTeam2})" : "inserito"}",
                           type: PTextType.h3,
                           textColor: opaqueTextColor,
                         ),

@@ -28,19 +28,21 @@ class Teams {
   String? name;
   String? iso;
   String? girone;
+  String? breve;
 
   //
   TextEditingController nameController = TextEditingController();
   TextEditingController isoController = TextEditingController();
   TextEditingController gironeController = TextEditingController();
 
-  Teams({this.id, this.name, this.iso, this.girone});
+  Teams({this.id, this.name, this.iso, this.girone, this.breve});
 
   Teams.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     iso = json['iso'];
     girone = json['girone'];
+    breve = json['breve'];
   }
 
   Map<String, dynamic> toJson() {
@@ -49,6 +51,7 @@ class Teams {
     data['name'] = name;
     data['iso'] = iso;
     data['girone'] = girone;
+    data['breve'] = breve;
     return data;
   }
 }
