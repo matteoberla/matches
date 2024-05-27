@@ -74,8 +74,8 @@ class GironiBottomSheetsHandler {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Visibility(
-                          visible:
-                              loginHandler.currentUserIsAdmin(gironiBetContext),
+                          visible: loginHandler
+                              .currentUserIsAdminOrImpersona(gironiBetContext),
                           child: Row(
                             children: [
                               PalladioActionButton(

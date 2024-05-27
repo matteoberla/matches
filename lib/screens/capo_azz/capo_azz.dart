@@ -158,7 +158,7 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
                 ),
               ),
               Visibility(
-                visible: loginHandler.currentUserIsAdmin(context),
+                visible: loginHandler.currentUserIsAdminOrImpersona(context),
                 child: Row(
                   children: [
                     PalladioActionButton(

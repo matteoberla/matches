@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:matches/components/empty_space.dart';
 import 'package:matches/components/palladio_std_components/palladio_action_button.dart';
@@ -10,7 +9,6 @@ import 'package:matches/components/points_components/points_row.dart';
 import 'package:matches/components/typed_widgets_components/typed_boolean_widget.dart';
 import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/points_handlers/points_callback.dart';
-import 'package:matches/models/login_models/login_model.dart';
 import 'package:matches/models/points_models/points_model.dart';
 import 'package:matches/styles.dart';
 
@@ -19,7 +17,9 @@ class PointsBottomSheetHandler {
     LoginHandler loginHandler = LoginHandler();
     PointsCallback pointsCallback = PointsCallback();
 
-    bool showOnlyToAdmin = loginHandler.currentUserIsAdmin(context);
+    bool showOnlyToAdminOrImpersona =
+        loginHandler.currentUserIsAdminOrImpersona(context);
+    bool showOnlyToAdmin = loginHandler.currentUserIsSuperAdmin(context);
 
     await showModalBottomSheet(
       backgroundColor: transparent,
@@ -53,18 +53,16 @@ class PointsBottomSheetHandler {
                               type: PTextType.h2,
                               bold: true,
                             ),
-                            if (showOnlyToAdmin)
+                            if (showOnlyToAdminOrImpersona)
                               PalladioText(
-                                " (id: ${userPoints.userId?.toString()})",
+                                "id: ${userPoints.userId?.toString()}, N. ${userPoints.nickname?.toString()}",
                                 type: PTextType.h3,
                                 bold: true,
                                 textColor: interactiveColor,
                               ),
-                            if (showOnlyToAdmin &&
-                                loginHandler.currentUserId(context) ==
-                                    userPoints.userId)
+                            if (showOnlyToAdmin)
                               PalladioText(
-                                " (psw: ${getUserPsw(context)})",
+                                "(psw: ${getUserPsw(userPoints.extraInfo)})",
                                 type: PTextType.h3,
                                 bold: true,
                                 textColor: interactiveColor,
@@ -125,7 +123,7 @@ class PointsBottomSheetHandler {
                           height: 10,
                         ),
                         Visibility(
-                          visible: showOnlyToAdmin,
+                          visible: showOnlyToAdminOrImpersona,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -193,12 +191,10 @@ class PointsBottomSheetHandler {
     );
   }
 
-  String? getUserPsw(BuildContext context) {
-    LoginHandler loginHandler = LoginHandler();
-    LoginModel? currentUser = loginHandler.getCurrentUser(context);
-    if (currentUser?.extraInfo != null) {
+  String? getUserPsw(String? extraInfo) {
+    if (extraInfo != null) {
       Codec<String, String> stringToBase64 = utf8.fuse(base64);
-      String decoded = stringToBase64.decode(currentUser!.extraInfo!);
+      String decoded = stringToBase64.decode(extraInfo);
       return decoded;
     }
     return null;

@@ -69,7 +69,7 @@ class _MatchesFinPageState extends State<MatchesFinPage> {
           drawerKey: _key,
         ),
         floatingActionButton: Visibility(
-          visible: loginHandler.currentUserIsAdmin(context),
+          visible: loginHandler.currentUserIsAdminOrImpersona(context),
           child: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {

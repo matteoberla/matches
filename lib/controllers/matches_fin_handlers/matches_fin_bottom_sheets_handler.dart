@@ -66,8 +66,8 @@ class MatchesFinBottomSheetsHandler {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Visibility(
-                          visible:
-                              loginHandler.currentUserIsAdmin(matchBetContext),
+                          visible: loginHandler
+                              .currentUserIsAdminOrImpersona(matchBetContext),
                           child: Row(
                             children: [
                               PalladioActionButton(

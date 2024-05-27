@@ -21,7 +21,7 @@ class MatchesCallback {
     Matches match,
   ) async {
     LoginHandler loginHandler = LoginHandler();
-    if (loginHandler.currentUserIsAdmin(context) == false) return;
+    if (loginHandler.currentUserIsAdminOrImpersona(context) == false) return;
     await Alerts.showConfirmAlertNoContext("Conferma", "Eliminare la partita?",
         () async {
       //eliminazione

@@ -162,7 +162,7 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                   ),
                 ),
                 Visibility(
-                  visible: loginHandler.currentUserIsAdmin(context),
+                  visible: loginHandler.currentUserIsAdminOrImpersona(context),
                   child: Row(
                     children: [
                       PalladioActionButton(

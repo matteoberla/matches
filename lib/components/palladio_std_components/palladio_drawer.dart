@@ -176,9 +176,9 @@ class PalladioDrawer extends StatelessWidget {
                         setupCallback.onCapocannoniereItaPressed(context);
                       },
                     ),
-                    if (loginHandler.currentUserIsAdmin(context))
+                    if (loginHandler.currentUserIsAdminOrImpersona(context))
                       const Divider(),
-                    if (loginHandler.currentUserIsAdmin(context))
+                    if (loginHandler.currentUserIsAdminOrImpersona(context))
                       ListTile(
                         leading: const PalladioAssetImage(
                           directory: "general",
@@ -192,9 +192,9 @@ class PalladioDrawer extends StatelessWidget {
                           setupCallback.onSquadrePressed(context);
                         },
                       ),
-                    if (loginHandler.currentUserIsAdmin(context))
+                    if (loginHandler.currentUserIsAdminOrImpersona(context))
                       const Divider(),
-                    if (loginHandler.currentUserIsAdmin(context))
+                    if (loginHandler.currentUserIsAdminOrImpersona(context))
                       ListTile(
                         leading: const PalladioAssetImage(
                           directory: "general",

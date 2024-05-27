@@ -24,6 +24,8 @@ class PointsModel {
 class Points {
   int? userId;
   String? username;
+  String? nickname;
+  String? extraInfo;
   int? isActive;
   String? totalMatchesPoints;
   String? totalGironiPoints;
@@ -42,6 +44,8 @@ class Points {
   Points(
       {this.userId,
       this.username,
+      this.nickname,
+      this.extraInfo,
       this.isActive,
       this.totalMatchesPoints,
       this.totalGironiPoints,
@@ -60,6 +64,8 @@ class Points {
   Points.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
     username = json['username'];
+    nickname = json['nickname'];
+    extraInfo = json['extra_info'];
     isActive = json['isActive'];
     totalMatchesPoints = json['total_matches_points'];
     totalGironiPoints = json['total_gironi_points'];
@@ -81,6 +87,8 @@ class Points {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['user_id'] = userId;
     data['username'] = username;
+    data['nickname'] = nickname;
+    data['extra_info'] = extraInfo;
     data['isActive'] = isActive;
     data['total_matches_points'] = totalMatchesPoints;
     data['total_gironi_points'] = totalGironiPoints;

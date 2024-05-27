@@ -201,13 +201,14 @@ class LoginHandler {
     return currentUser?.id;
   }
 
-  bool currentUserIsAdmin(BuildContext context) {
+  bool currentUserIsAdminOrImpersona(BuildContext context) {
     return getCurrentUser(context)?.admin == 1 ||
         getCurrentUser(context)?.impersona == true;
   }
 
   bool currentUserIsSuperAdmin(BuildContext context) {
-    return getCurrentUser(context)?.id == 1;
+    return getCurrentUser(context)?.admin == 1 &&
+        getCurrentUser(context)?.id == 1;
   }
 
   Future<bool> resultCanBeEdited(BuildContext context) async {

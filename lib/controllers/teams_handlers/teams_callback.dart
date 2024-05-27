@@ -23,7 +23,7 @@ class TeamsCallback {
     Teams team,
   ) async {
     LoginHandler loginHandler = LoginHandler();
-    if (loginHandler.currentUserIsAdmin(context) == false) return;
+    if (loginHandler.currentUserIsAdminOrImpersona(context) == false) return;
     await Alerts.showConfirmAlertNoContext("Conferma", "Eliminare la squadra?",
         () async {
       //eliminazione

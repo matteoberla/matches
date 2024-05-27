@@ -59,7 +59,7 @@ class _TeamRivelazPageState extends State<TeamRivelazPage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Visibility(
-                  visible: loginHandler.currentUserIsAdmin(context),
+                  visible: loginHandler.currentUserIsAdminOrImpersona(context),
                   child: Row(
                     children: [
                       PalladioActionButton(

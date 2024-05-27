@@ -59,7 +59,7 @@ class _GoalVelocePageState extends State<GoalVelocePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Visibility(
-                  visible: loginHandler.currentUserIsAdmin(context),
+                  visible: loginHandler.currentUserIsAdminOrImpersona(context),
                   child: Row(
                     children: [
                       PalladioActionButton(
