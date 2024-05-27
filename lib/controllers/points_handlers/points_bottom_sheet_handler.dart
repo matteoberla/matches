@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:matches/components/empty_space.dart';
 import 'package:matches/components/palladio_std_components/palladio_action_button.dart';
@@ -8,6 +10,7 @@ import 'package:matches/components/points_components/points_row.dart';
 import 'package:matches/components/typed_widgets_components/typed_boolean_widget.dart';
 import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/points_handlers/points_callback.dart';
+import 'package:matches/models/login_models/login_model.dart';
 import 'package:matches/models/points_models/points_model.dart';
 import 'package:matches/styles.dart';
 
@@ -41,7 +44,9 @@ class PointsBottomSheetHandler {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             PalladioText(
                               userPoints.username ?? "",
@@ -51,6 +56,15 @@ class PointsBottomSheetHandler {
                             if (showOnlyToAdmin)
                               PalladioText(
                                 " (id: ${userPoints.userId?.toString()})",
+                                type: PTextType.h3,
+                                bold: true,
+                                textColor: interactiveColor,
+                              ),
+                            if (showOnlyToAdmin &&
+                                loginHandler.currentUserId(context) ==
+                                    userPoints.userId)
+                              PalladioText(
+                                " (psw: ${getUserPsw(context)})",
                                 type: PTextType.h3,
                                 bold: true,
                                 textColor: interactiveColor,
@@ -177,5 +191,16 @@ class PointsBottomSheetHandler {
         );
       },
     );
+  }
+
+  String? getUserPsw(BuildContext context) {
+    LoginHandler loginHandler = LoginHandler();
+    LoginModel? currentUser = loginHandler.getCurrentUser(context);
+    if (currentUser?.extraInfo != null) {
+      Codec<String, String> stringToBase64 = utf8.fuse(base64);
+      String decoded = stringToBase64.decode(currentUser!.extraInfo!);
+      return decoded;
+    }
+    return null;
   }
 }

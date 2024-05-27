@@ -196,9 +196,18 @@ class LoginHandler {
     return loginProvider.currentUser;
   }
 
+  int? currentUserId(BuildContext context) {
+    LoginModel? currentUser = getCurrentUser(context);
+    return currentUser?.id;
+  }
+
   bool currentUserIsAdmin(BuildContext context) {
     return getCurrentUser(context)?.admin == 1 ||
         getCurrentUser(context)?.impersona == true;
+  }
+
+  bool currentUserIsSuperAdmin(BuildContext context) {
+    return getCurrentUser(context)?.id == 1;
   }
 
   Future<bool> resultCanBeEdited(BuildContext context) async {
