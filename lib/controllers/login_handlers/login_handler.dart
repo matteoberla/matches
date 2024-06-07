@@ -222,13 +222,14 @@ class LoginHandler {
       return false;
     }
 
-    if (currentUser != null) {
+    if (currentUser != null && context.mounted) {
       DateTime? dtScad = DateTimeHandler.getDateTimeFromString(
           currentUser.dtScadenza, DateFormatType.dateAndTime);
       DateTime now = DateTime.now();
 
       if (dtScad != null) {
-        if (now.isBefore(dtScad)) {
+        if (now.isBefore(dtScad) ||
+            getCurrentUser(context)?.impersona == true) {
           return true;
         } else {
           await Alerts.showInfoAlertNoContext(
