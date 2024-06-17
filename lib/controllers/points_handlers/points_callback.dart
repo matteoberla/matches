@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:matches/controllers/alerts.dart';
 import 'package:matches/controllers/login_handlers/login_handler.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
 import 'package:matches/models/points_models/points_model.dart';
 import 'package:matches/state_management/points_provider/points_provider.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class PointsCallback {
   onUserPointsTap(BuildContext context, Points? userPoints) async {
@@ -37,6 +39,27 @@ class PointsCallback {
 
     if (userPoints.userId != null) {
       await loginHandler.impersonaUtente(context, userPoints.userId!);
+    }
+  }
+
+  onSearchUtente(
+      BuildContext context,
+      PointsProvider provider,
+      TextEditingController textController,
+      ItemScrollController scrollController) async {
+    String searchedUser = textController.text.toLowerCase();
+
+    //cerco utenti
+    int foundIndex = provider.pointsList.indexWhere((element) =>
+        (element.nickname ?? "").toLowerCase().contains(searchedUser) ||
+        (element.username ?? "").toLowerCase().contains(searchedUser));
+
+    if (foundIndex != -1) {
+      scrollController.scrollTo(
+          index: foundIndex, duration: const Duration(milliseconds: 250));
+    } else {
+      await Alerts.showInfoAlertNoContext(
+          "Attenzione", "Nessun utente '$searchedUser' trovato");
     }
   }
 }
