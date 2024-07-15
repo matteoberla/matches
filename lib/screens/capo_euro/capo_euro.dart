@@ -183,6 +183,7 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: capoEuroProvider.usersCapoEuroBetListLength,
                       itemBuilder: (context, index) {
