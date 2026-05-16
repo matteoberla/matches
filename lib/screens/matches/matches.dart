@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matches/components/countdown_timer.dart';
 import 'package:matches/components/matches_components/match_girone_group.dart';
 import 'package:matches/components/matches_components/match_tile.dart';
 import 'package:matches/components/palladio_std_components/palladio_app_bar.dart';
@@ -49,26 +50,33 @@ class _MatchesPageState extends State<MatchesPage> {
           ),
         ),
         body: PalladioBody(
-          child: StickyGroupedListView<dynamic, String>(
-              elements: matchesProvider.matchesList,
-              groupBy: (element) =>
-                  matchesHandler.getMatchGroup(context, element),
-              stickyHeaderBackgroundColor: transparent,
-              groupComparator: (g1, g2) {
-                return g1.compareTo(g2);
-              },
-              groupSeparatorBuilder: (dynamic element) =>
-                  MatchGironeGroup(match: element),
-              itemBuilder: (context, dynamic element) =>
-                  MatchTile(match: element),
-              itemComparator: (e1, e2) =>
-                  (DateTimeHandler.getDateTimeFromString(
-                              e1.date, DateFormatType.dateAndTime) ??
-                          DateTime.now())
-                      .compareTo(DateTimeHandler.getDateTimeFromString(
-                              e2.date, DateFormatType.dateAndTime) ??
-                          DateTime.now()),
-              elementIdentifier: (element) => element.name),
+          child: Column(
+            children: [
+              CountdownWidget(),
+              Expanded(
+                child: StickyGroupedListView<dynamic, String>(
+                    elements: matchesProvider.matchesList,
+                    groupBy: (element) =>
+                        matchesHandler.getMatchGroup(context, element),
+                    stickyHeaderBackgroundColor: transparent,
+                    groupComparator: (g1, g2) {
+                      return g1.compareTo(g2);
+                    },
+                    groupSeparatorBuilder: (dynamic element) =>
+                        MatchGironeGroup(match: element),
+                    itemBuilder: (context, dynamic element) =>
+                        MatchTile(match: element),
+                    itemComparator: (e1, e2) =>
+                        (DateTimeHandler.getDateTimeFromString(
+                                    e1.date, DateFormatType.dateAndTime) ??
+                                DateTime.now())
+                            .compareTo(DateTimeHandler.getDateTimeFromString(
+                                    e2.date, DateFormatType.dateAndTime) ??
+                                DateTime.now()),
+                    elementIdentifier: (element) => element.name),
+              ),
+            ],
+          ),
         ),
         drawer: PalladioDrawer(
           drawerKey: _key,

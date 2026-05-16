@@ -12,7 +12,7 @@ class HttpHandler {
 
   static get ipServer {
     //TODO modifica endpoint
-    if (kDebugMode && false) {
+    if (kDebugMode) {
       return "http://localhost";
     }
     return "https://wm2026.netsons.org";
