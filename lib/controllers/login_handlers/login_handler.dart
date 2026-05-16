@@ -203,7 +203,8 @@ class LoginHandler {
 
   bool currentUserIsAdminOrImpersona(BuildContext context) {
     return getCurrentUser(context)?.admin == 1 ||
-        getCurrentUser(context)?.impersona == true;
+        getCurrentUser(context)?.impersona == true ||
+        getCurrentUser(context)?.showPoints == 1;
   }
 
   bool currentUserIsSuperAdmin(BuildContext context) {

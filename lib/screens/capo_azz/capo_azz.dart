@@ -52,172 +52,175 @@ class _CapoAzzPageState extends State<CapoAzzPage> {
       body: PalladioBody(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Visibility(
-                visible: capoAzzProvider.showUsersBetList == false,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const PalladioText(
-                      "1 nome",
-                      type: PTextType.h2,
-                      bold: true,
-                    ),
-                    PalladioTextInput(
-                      textController:
-                          capoAzzProvider.capoAzzBetList?[0].betController ??
-                              TextEditingController(),
-                      allowedChars: AllowedChars.text,
-                      textAlign: TextAlign.start,
-                      onTap: () {
-                        TextControllerHandler.moveCursorToEnd(
-                            capoAzzProvider.capoAzzBetList?[0].betController);
-                      },
-                    ),
-                    Visibility(
-                      visible:
-                          capoAzzProvider.capoAzzBetList?[0].points != null,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.control_point_duplicate_sharp,
-                            color: interactiveColor,
-                          ),
-                          const EmptySpace(
-                            width: 5,
-                          ),
-                          PalladioText(
-                            "Punti: ${capoAzzProvider.capoAzzBetList?[0].points}",
-                            type: PTextType.h3,
-                            textColor: interactiveColor,
-                          ),
-                        ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Visibility(
+                  visible: capoAzzProvider.showUsersBetList == false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const PalladioText(
+                        "1 nome",
+                        type: PTextType.h2,
+                        bold: true,
                       ),
-                    ),
-                    const EmptySpace(
-                      height: 5,
-                    ),
-                    const PalladioText(
-                      "2 nome",
-                      type: PTextType.h2,
-                      bold: true,
-                    ),
-                    PalladioTextInput(
-                      textController:
-                          capoAzzProvider.capoAzzBetList?[1].betController ??
-                              TextEditingController(),
-                      allowedChars: AllowedChars.text,
-                      textAlign: TextAlign.start,
-                      onTap: () {
-                        TextControllerHandler.moveCursorToEnd(
-                            capoAzzProvider.capoAzzBetList?[1].betController);
-                      },
-                    ),
-                    Visibility(
-                      visible:
-                          capoAzzProvider.capoAzzBetList?[1].points != null,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.control_point_duplicate_sharp,
-                            color: interactiveColor,
-                          ),
-                          const EmptySpace(
-                            width: 5,
-                          ),
-                          PalladioText(
-                            "Punti: ${capoAzzProvider.capoAzzBetList?[1].points}",
-                            type: PTextType.h3,
-                            textColor: interactiveColor,
-                          ),
-                        ],
+                      PalladioTextInput(
+                        textController:
+                            capoAzzProvider.capoAzzBetList?[0].betController ??
+                                TextEditingController(),
+                        allowedChars: AllowedChars.text,
+                        textAlign: TextAlign.start,
+                        onTap: () {
+                          TextControllerHandler.moveCursorToEnd(
+                              capoAzzProvider.capoAzzBetList?[0].betController);
+                        },
                       ),
-                    ),
-                    const EmptySpace(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        PalladioActionButton(
-                          title: "Salva",
-                          onTap: () async {
-                            capoAzzCallback.onSavePressed(
-                                context, capoAzzProvider);
-                          },
-                          backgroundColor: interactiveColor,
+                      Visibility(
+                        visible:
+                            capoAzzProvider.capoAzzBetList?[0].points != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.control_point_duplicate_sharp,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Punti: ${capoAzzProvider.capoAzzBetList?[0].points}",
+                              type: PTextType.h3,
+                              textColor: interactiveColor,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Visibility(
-                visible: loginHandler.currentUserIsAdminOrImpersona(context),
-                child: Row(
-                  children: [
-                    PalladioActionButton(
-                      title: capoAzzProvider.showUsersBetList
-                          ? "Indietro"
-                          : "Imposta risultato",
-                      onTap: () async {
-                        capoAzzCallback
-                            .onImpostaRisultatoPressed(capoAzzProvider);
-                      },
-                      backgroundColor: interactiveColor,
-                    ),
-                  ],
-                ),
-              ),
-              Visibility(
-                visible: capoAzzProvider.showUsersBetList,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: capoAzzProvider.usersCapoAzzBetListLength,
-                    itemBuilder: (context, index) {
-                      CapoAzzBet userBet =
-                          capoAzzProvider.usersCapoAzzBetList[index];
-
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                      const EmptySpace(
+                        height: 5,
+                      ),
+                      const PalladioText(
+                        "2 nome",
+                        type: PTextType.h2,
+                        bold: true,
+                      ),
+                      PalladioTextInput(
+                        textController:
+                            capoAzzProvider.capoAzzBetList?[1].betController ??
+                                TextEditingController(),
+                        allowedChars: AllowedChars.text,
+                        textAlign: TextAlign.start,
+                        onTap: () {
+                          TextControllerHandler.moveCursorToEnd(
+                              capoAzzProvider.capoAzzBetList?[1].betController);
+                        },
+                      ),
+                      Visibility(
+                        visible:
+                            capoAzzProvider.capoAzzBetList?[1].points != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.control_point_duplicate_sharp,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Punti: ${capoAzzProvider.capoAzzBetList?[1].points}",
+                              type: PTextType.h3,
+                              textColor: interactiveColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const EmptySpace(
+                        height: 10,
+                      ),
+                      Row(
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              PalladioText(
-                                  "${userBet.betNum}. ${userBet.value ?? "???"}",
-                                  type: PTextType.h3),
-                              PalladioText(
-                                capoAzzHandler.getUsernameFromUserId(
-                                        context, userBet) ??
-                                    "NO USER",
-                                type: PTextType.h4,
-                                textColor: opaqueTextColor,
-                              ),
-                            ],
+                          PalladioActionButton(
+                            title: "Salva",
+                            onTap: () async {
+                              capoAzzCallback.onSavePressed(
+                                  context, capoAzzProvider);
+                            },
+                            backgroundColor: interactiveColor,
                           ),
-                          TypedBooleanWidget(
-                              onPressed: () {
-                                capoAzzCallback.onBetValidityChanged(
-                                    context, capoAzzProvider, userBet);
-                              },
-                              status: userBet.isValid == 1),
-                          PalladioText("Punti: ${userBet.points ?? "???"}",
-                              type: PTextType.h3),
                         ],
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
+                Visibility(
+                  visible: loginHandler.currentUserIsAdminOrImpersona(context),
+                  child: Row(
+                    children: [
+                      PalladioActionButton(
+                        title: capoAzzProvider.showUsersBetList
+                            ? "Indietro"
+                            : "Imposta risultato",
+                        onTap: () async {
+                          capoAzzCallback
+                              .onImpostaRisultatoPressed(capoAzzProvider);
+                        },
+                        backgroundColor: interactiveColor,
+                      ),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  visible: capoAzzProvider.showUsersBetList,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: capoAzzProvider.usersCapoAzzBetListLength,
+                      itemBuilder: (context, index) {
+                        CapoAzzBet userBet =
+                            capoAzzProvider.usersCapoAzzBetList[index];
+
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                PalladioText(
+                                    "${userBet.betNum}. ${userBet.value ?? "???"}",
+                                    type: PTextType.h3),
+                                PalladioText(
+                                  capoAzzHandler.getUsernameFromUserId(
+                                          context, userBet) ??
+                                      "NO USER",
+                                  type: PTextType.h4,
+                                  textColor: opaqueTextColor,
+                                ),
+                              ],
+                            ),
+                            TypedBooleanWidget(
+                                onPressed: () {
+                                  capoAzzCallback.onBetValidityChanged(
+                                      context, capoAzzProvider, userBet);
+                                },
+                                status: userBet.isValid == 1),
+                            PalladioText("Punti: ${userBet.points ?? "???"}",
+                                type: PTextType.h3),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

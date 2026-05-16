@@ -7,6 +7,7 @@ class LoginModel {
   int? admin;
   String? dtScadenza;
   int? appVer;
+  int? showPoints;
   String? message;
   bool? impersona;
   String? extraInfo;
@@ -19,6 +20,7 @@ class LoginModel {
       this.password,
       this.admin,
       this.dtScadenza,
+      this.showPoints,
       this.appVer,
       this.message,
       this.impersona,
@@ -32,6 +34,7 @@ class LoginModel {
     password = json['password'];
     admin = json['admin'];
     dtScadenza = json['dt_scadenza'];
+    showPoints = json['show_points'];
     appVer = json['app_ver'];
     message = json['message'];
     impersona = json['impersona'];
@@ -47,6 +50,7 @@ class LoginModel {
     data['password'] = password;
     data['admin'] = admin;
     data['dt_scadenza'] = dtScadenza;
+    data['show_points'] = showPoints;
     data['app_ver'] = appVer;
     data['message'] = message;
     data['impersona'] = impersona;
