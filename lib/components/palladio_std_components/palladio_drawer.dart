@@ -155,27 +155,28 @@ class PalladioDrawer extends StatelessWidget {
                         fileName: "capo.png",
                       ),
                       title: const PalladioText(
-                        "Capocannoniere Euro",
+                        "Capocannoniere Mondiale",
                         type: PTextType.h3,
                       ),
                       onTap: () async {
                         setupCallback.onCapocannoniereEuroPressed(context);
                       },
                     ),
-                    const Divider(),
-                    ListTile(
-                      leading: const PalladioAssetImage(
-                        directory: "general",
-                        fileName: "capo.png",
+                    if (false) const Divider(),
+                    if (false)
+                      ListTile(
+                        leading: const PalladioAssetImage(
+                          directory: "general",
+                          fileName: "capo.png",
+                        ),
+                        title: const PalladioText(
+                          "Capocannoniere Azzurro",
+                          type: PTextType.h3,
+                        ),
+                        onTap: () async {
+                          setupCallback.onCapocannoniereItaPressed(context);
+                        },
                       ),
-                      title: const PalladioText(
-                        "Capocannoniere Azzurro",
-                        type: PTextType.h3,
-                      ),
-                      onTap: () async {
-                        setupCallback.onCapocannoniereItaPressed(context);
-                      },
-                    ),
                     if (loginHandler.currentUserIsAdminOrImpersona(context))
                       const Divider(),
                     if (loginHandler.currentUserIsAdminOrImpersona(context))

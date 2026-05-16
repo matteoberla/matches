@@ -27,8 +27,10 @@ class PointsCallback {
     Clipboard.setData(
             ClipboardData(text: pointsHandler.getUsersPoints(provider)))
         .then((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Classifica salvata negli appunti")));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Classifica salvata negli appunti")));
+      }
     });
   }
 

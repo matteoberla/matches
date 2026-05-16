@@ -164,16 +164,22 @@ class MatchesFinHandler {
     if (fase != null) {
       switch (fase.id) {
         case 2:
-          //ottavi
+          //sedicesimi
           return Colors.white;
         case 3:
+          //ottavi
+          return Colors.lightBlue[100]!;
+        case 4:
           //quarti
           return Colors.lightGreen[100]!;
-        case 4:
+        case 5:
           //semi
           return Colors.orange[100]!;
-        case 5:
-          //fin
+        case 6:
+          //finalina
+          return Colors.yellow[100]!;
+        case 7:
+          //finale
           return Colors.yellow[100]!;
         default:
           backgroundColor;

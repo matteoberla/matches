@@ -49,8 +49,7 @@ class Styles {
       useMaterial3: false,
       primarySwatch: Colors.grey,
       primaryColor: backgroundColor,
-      indicatorColor: const Color(0xffCBDCF8),
-      bottomAppBarTheme: const BottomAppBarTheme(
+      bottomAppBarTheme: const BottomAppBarThemeData(
         color: Color(0xffF1F5FB),
       ),
       hintColor: const Color(0xffEECED3),
@@ -72,6 +71,9 @@ class Styles {
       appBarTheme: const AppBarTheme(
         elevation: 0.0,
         iconTheme: IconThemeData(color: iconsColor),
+      ),
+      tabBarTheme: const TabBarThemeData(
+        indicatorColor: Color(0xffCBDCF8),
       ),
     );
   }

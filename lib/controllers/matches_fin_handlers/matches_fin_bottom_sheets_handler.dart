@@ -226,7 +226,7 @@ class MatchesFinBottomSheetsHandler {
                                           .onMatchBetFinalResultChanged(
                                               provider, newState);
                                     },
-                                    activeColor: interactiveColor,
+                                    activeThumbColor: interactiveColor,
                                     inactiveThumbColor: interactiveColor,
                                   ),
                                   PalladioText(
@@ -435,7 +435,7 @@ class MatchesFinBottomSheetsHandler {
                                           .onMatchFinalResultChanged(
                                               provider, newState);
                                     },
-                                    activeColor: interactiveColor,
+                                    activeThumbColor: interactiveColor,
                                     inactiveThumbColor: interactiveColor,
                                   ),
                                   PalladioText(

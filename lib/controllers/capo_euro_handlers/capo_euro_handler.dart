@@ -48,7 +48,7 @@ class CapoEuroHandler {
 
       if (context.mounted &&
           capoEuroBetModel.capoEuroBet != null &&
-          capoEuroBetModel.capoEuroBet?.length == 2) {
+          capoEuroBetModel.capoEuroBet?.length == 3) {
         capoEuroProvider.overrideCapoEuroBetList(capoEuroBetModel.capoEuroBet!);
         initCapoEuroTextFelds(context);
       } else {
@@ -59,6 +59,7 @@ class CapoEuroHandler {
           CapoEuroBetModel newBetModel = CapoEuroBetModel(capoEuroBet: [
             CapoEuroBet(betNum: 1, userId: currentUser?.id, isValid: 0),
             CapoEuroBet(betNum: 2, userId: currentUser?.id, isValid: 0),
+            CapoEuroBet(betNum: 3, userId: currentUser?.id, isValid: 0),
           ]);
 
           capoEuroProvider
@@ -76,6 +77,8 @@ class CapoEuroHandler {
         capoEuroProvider.capoEuroBetList?[0].value ?? "";
     capoEuroProvider.capoEuroBetList?[1].betController.text =
         capoEuroProvider.capoEuroBetList?[1].value ?? "";
+    capoEuroProvider.capoEuroBetList?[2].betController.text =
+        capoEuroProvider.capoEuroBetList?[2].value ?? "";
   }
 
   ///

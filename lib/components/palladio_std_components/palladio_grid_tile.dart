@@ -20,7 +20,7 @@ class PalladioGridTile extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 boxShadow: [
                   BoxShadow(
-                    color: mainColor.withOpacity(0.4),
+                    color: mainColor.withValues(alpha: 0.4),
                     spreadRadius: 1,
                     blurRadius: 1, // changes position of shadow
                   ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:matches/controllers/fatal_error_handler.dart';
@@ -11,9 +12,11 @@ class HttpHandler {
 
   static get ipServer {
     //TODO modifica endpoint
-    return "https://em2024.netsons.org";
+    if (kDebugMode && false) {
+      return "http://localhost";
+    }
+    return "https://wm2026.netsons.org";
     //return "http://berlatidns.hopto.org:8081";
-    //return "http://localhost";
   }
 
   static get endpoint async {

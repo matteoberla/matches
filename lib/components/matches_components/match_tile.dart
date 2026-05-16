@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:matches/components/empty_space.dart';
 import 'package:matches/components/palladio_std_components/palladio_text.dart';
 import 'package:matches/components/team_components/team_flag_name.dart';
+import 'package:matches/controllers/date_time_handler.dart';
 import 'package:matches/controllers/fasi_handlers/fasi_handler.dart';
 import 'package:matches/controllers/matches_handlers/matches_callback.dart';
 import 'package:matches/controllers/matches_handlers/matches_handler.dart';
@@ -67,6 +68,13 @@ class MatchTile extends StatelessWidget {
                 children: [
                   const EmptySpace(
                     height: 10,
+                  ),
+                  PalladioText(
+                    DateTimeHandler.getFormattedDateFromString(
+                            match.date, DateFormatType.dateAndTime) ??
+                        "",
+                    type: PTextType.h5,
+                    textColor: opaqueTextColor,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

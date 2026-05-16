@@ -40,7 +40,7 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
     return Scaffold(
       key: _key,
       appBar: PalladioAppBar(
-        title: "Capocannoniere europeo",
+        title: "Capocannoniere Mondiale",
         backgroundColor: canvasColor,
         leading: IconButton(
           onPressed: () {
@@ -134,6 +134,46 @@ class _CapoEuroPageState extends State<CapoEuroPage> {
                             ),
                             PalladioText(
                               "Punti: ${capoEuroProvider.capoEuroBetList?[1].points}",
+                              type: PTextType.h3,
+                              textColor: interactiveColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const EmptySpace(
+                        height: 5,
+                      ),
+                      const PalladioText(
+                        "3 nome",
+                        type: PTextType.h2,
+                        bold: true,
+                      ),
+                      PalladioTextInput(
+                        textController: capoEuroProvider
+                                .capoEuroBetList?[2].betController ??
+                            TextEditingController(),
+                        allowedChars: AllowedChars.text,
+                        textAlign: TextAlign.start,
+                        onTap: () {
+                          TextControllerHandler.moveCursorToEnd(capoEuroProvider
+                              .capoEuroBetList?[2].betController);
+                        },
+                      ),
+                      Visibility(
+                        visible:
+                            capoEuroProvider.capoEuroBetList?[2].points != null,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.control_point_duplicate_sharp,
+                              color: interactiveColor,
+                            ),
+                            const EmptySpace(
+                              width: 5,
+                            ),
+                            PalladioText(
+                              "Punti: ${capoEuroProvider.capoEuroBetList?[2].points}",
                               type: PTextType.h3,
                               textColor: interactiveColor,
                             ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:matches/components/empty_space.dart';
 import 'package:matches/components/palladio_std_components/palladio_action_button.dart';
@@ -88,7 +89,7 @@ class PointsBottomSheetHandler {
                           points: userPoints.totalMatchesFinPoints,
                         ),
                         PointsRow(
-                          description: "Bonus migliori terze:",
+                          description: "Bonus ottavifinaliste:",
                           points: userPoints.totalMatchesFinBonusOttavi,
                         ),
                         PointsRow(
@@ -111,12 +112,13 @@ class PointsBottomSheetHandler {
                           description: "Team rivelazione:",
                           points: userPoints.totalTeamRivelazPoints,
                         ),
+                        if (false)
+                          PointsRow(
+                            description: "Capocannoniere azzurro:",
+                            points: userPoints.totalCapoAzzPoints,
+                          ),
                         PointsRow(
-                          description: "Capocannoniere azzurro:",
-                          points: userPoints.totalCapoAzzPoints,
-                        ),
-                        PointsRow(
-                          description: "Capocannoniere europeo:",
+                          description: "Capocannoniere mondiale:",
                           points: userPoints.totalCapoEuroPoints,
                         ),
                         const EmptySpace(

@@ -15,11 +15,26 @@ class TeamsHandler {
     if (iso != null) {
       return Padding(
         padding: const EdgeInsets.all(1.0),
-        child: Image.network(
-          'https://flagcdn.com/h40/${iso.toLowerCase()}.png',
+        child: Container(
           width: 60,
           height: 40,
-          fit: BoxFit.cover,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            boxShadow: const [
+              BoxShadow(
+                color: opaqueColor,
+                blurRadius: 4,
+                spreadRadius: 1,
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Image.network(
+              'https://flagcdn.com/h40/${iso.toLowerCase()}.png',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       );
     } else {

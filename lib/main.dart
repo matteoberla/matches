@@ -11,6 +11,8 @@ import 'package:provider/provider.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
+// flutter build web --no-tree-shake-icons --base-href /matches/
+
 void main() {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: multiProvidersHandler.getProvidersList(),
       child: MaterialApp(
-        title: 'EM2024',
+        title: 'WM2026',
         theme: Styles.themeData(false, context),
         // The Mandy red, dark theme.
         darkTheme: Styles.themeData(false, context),
