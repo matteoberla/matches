@@ -25,9 +25,11 @@ class _PointsListPageState extends State<PointsListPage> {
   //
   SetupCallback setupCallback = SetupCallback();
   PointsCallback pointsCallback = PointsCallback();
+
   //
   ItemScrollController scrollController = ItemScrollController();
   FocusNode focusNode = FocusNode();
+
   //
   TextEditingController textEditingController = TextEditingController();
 
@@ -77,6 +79,8 @@ class _PointsListPageState extends State<PointsListPage> {
                 itemCount: pointsProvider.pointsList.length,
                 itemBuilder: (context, index) {
                   Points points = pointsProvider.pointsList[index];
+
+                  print(points.toJson());
 
                   return ListTile(
                     leading: PalladioText(

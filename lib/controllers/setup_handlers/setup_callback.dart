@@ -43,6 +43,10 @@ class SetupCallback {
     Navigator.pushReplacementNamed(context, '/points_list');
   }
 
+  onPartecipantiPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/users_list');
+  }
+
   onLogoutPressed(BuildContext context) async {
     await Alerts.showConfirmAlertNoContext("Conferma", "Eseguire il logout?",
         () {

@@ -13,6 +13,7 @@ import 'package:matches/screens/signup/signup.dart';
 import 'package:matches/screens/team_rivelaz/team_rivelaz.dart';
 import 'package:matches/screens/teams/team_info.dart';
 import 'package:matches/screens/teams/teams_list.dart';
+import 'package:matches/screens/users_list/users_list.dart';
 
 var routes = {
   '/login': (context) => const LoginPage(),
@@ -38,5 +39,6 @@ var routes = {
   //***
   '/capo_azz': (context) => const CapoAzzPage(),
   //***
-  '/points_list': (context) => const PointsListPage()
+  '/points_list': (context) => const PointsListPage(),
+  '/users_list': (context) => const UsersListPage()
 };

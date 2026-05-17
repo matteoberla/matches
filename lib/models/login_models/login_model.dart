@@ -11,6 +11,7 @@ class LoginModel {
   String? message;
   bool? impersona;
   String? extraInfo;
+  int? isActive;
 
   LoginModel(
       {this.token,
@@ -24,7 +25,8 @@ class LoginModel {
       this.appVer,
       this.message,
       this.impersona,
-      this.extraInfo});
+      this.extraInfo,
+      this.isActive});
 
   LoginModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
@@ -39,6 +41,7 @@ class LoginModel {
     message = json['message'];
     impersona = json['impersona'];
     extraInfo = json['extra_info'];
+    isActive = json['is_active'];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +58,7 @@ class LoginModel {
     data['message'] = message;
     data['impersona'] = impersona;
     data['extra_info'] = extraInfo;
+    data['is_active'] = isActive;
     return data;
   }
 }

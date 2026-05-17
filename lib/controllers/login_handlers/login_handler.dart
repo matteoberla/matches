@@ -100,6 +100,10 @@ class LoginHandler {
           bool initialized = await initializeAllData(context, provider);
           if (initialized && context.mounted) {
             Navigator.popAndPushNamed(context, '/matches');
+            if (provider.currentUser?.isActive == 0) {
+              await Alerts.showInfoAlertNoContext("Attenzione",
+                  "Ricorda di versare la quota per la partecipazione entro la scadenza!");
+            }
           }
         }
       } else {

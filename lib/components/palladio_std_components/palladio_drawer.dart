@@ -209,6 +209,20 @@ class PalladioDrawer extends StatelessWidget {
                           setupCallback.onClassificaPressed(context);
                         },
                       ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "users.png",
+                      ),
+                      title: const PalladioText(
+                        "Partecipanti",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onPartecipantiPressed(context);
+                      },
+                    ),
                   ],
                 ),
               ),

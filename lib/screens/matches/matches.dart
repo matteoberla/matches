@@ -52,7 +52,7 @@ class _MatchesPageState extends State<MatchesPage> {
         body: PalladioBody(
           child: Column(
             children: [
-              CountdownWidget(),
+              const CountdownWidget(),
               Expanded(
                 child: StickyGroupedListView<dynamic, String>(
                     elements: matchesProvider.matchesList,
