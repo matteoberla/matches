@@ -30,6 +30,7 @@ class Points {
   String? totalMatchesPoints;
   String? totalGironiPoints;
   String? totalMatchesFinPoints;
+  String? totalMatchesFinBonusSedi;
   String? totalMatchesFinBonusOttavi;
   String? totalMatchesFinBonusQuarti;
   String? totalMatchesFinBonusSemi;
@@ -50,6 +51,7 @@ class Points {
       this.totalMatchesPoints,
       this.totalGironiPoints,
       this.totalMatchesFinPoints,
+      this.totalMatchesFinBonusSedi,
       this.totalMatchesFinBonusOttavi,
       this.totalMatchesFinBonusQuarti,
       this.totalMatchesFinBonusSemi,
@@ -70,6 +72,7 @@ class Points {
     totalMatchesPoints = json['total_matches_points'];
     totalGironiPoints = json['total_gironi_points'];
     totalMatchesFinPoints = json['total_matches_fin_points'];
+    totalMatchesFinBonusSedi = json['total_matches_fin_bonus_sedi'];
     totalMatchesFinBonusOttavi =
         json['total_matches_fin_bonus_ottavi_migliori_terze'];
     totalMatchesFinBonusQuarti = json['total_matches_fin_bonus_quarti'];
@@ -93,6 +96,7 @@ class Points {
     data['total_matches_points'] = totalMatchesPoints;
     data['total_gironi_points'] = totalGironiPoints;
     data['total_matches_fin_points'] = totalMatchesFinPoints;
+    data['total_matches_fin_bonus_sedi'] = totalMatchesFinBonusSedi;
     data['total_matches_fin_bonus_ottavi_migliori_terze'] =
         totalMatchesFinBonusOttavi;
     data['total_matches_fin_bonus_quarti'] = totalMatchesFinBonusQuarti;

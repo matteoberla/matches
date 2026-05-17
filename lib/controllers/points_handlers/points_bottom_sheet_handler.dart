@@ -89,6 +89,10 @@ class PointsBottomSheetHandler {
                           points: userPoints.totalMatchesFinPoints,
                         ),
                         PointsRow(
+                          description: "Bonus sedicesimifinaliste:",
+                          points: userPoints.totalMatchesFinBonusOttavi,
+                        ),
+                        PointsRow(
                           description: "Bonus ottavifinaliste:",
                           points: userPoints.totalMatchesFinBonusOttavi,
                         ),
