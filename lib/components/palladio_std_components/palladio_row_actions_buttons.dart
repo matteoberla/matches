@@ -5,10 +5,14 @@ import 'package:matches/styles.dart';
 
 class PalladioRowActionButtons extends StatelessWidget {
   const PalladioRowActionButtons(
-      {super.key, required this.onSave, required this.onExit});
+      {super.key,
+      required this.onSave,
+      required this.onExit,
+      this.showSave = true});
 
   final VoidCallback onSave;
   final VoidCallback onExit;
+  final bool showSave;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +26,12 @@ class PalladioRowActionButtons extends StatelessWidget {
           onTap: onExit,
           backgroundColor: dangerColor,
         ),
-        PalladioActionButton(
-          title: "Salva",
-          onTap: onSave,
-          backgroundColor: interactiveColor,
-        ),
+        if (showSave)
+          PalladioActionButton(
+            title: "Salva",
+            onTap: onSave,
+            backgroundColor: interactiveColor,
+          ),
         const EmptySpace(
           width: 10,
         ),

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:matches/controllers/alerts.dart';
+import 'package:matches/controllers/gironi_handlers/gironi_handler.dart';
+import 'package:matches/controllers/matches_fin_handlers/matches_fin_handler.dart';
 import 'package:matches/controllers/matches_handlers/matches_bottom_sheets_handler.dart';
 import 'package:matches/controllers/matches_handlers/matches_requests.dart';
 import 'package:matches/controllers/points_handlers/points_handler.dart';
@@ -206,10 +208,18 @@ class MatchesHandler {
 
     httpProvider.updateLoadingState(false);
     if (saveMatchBetResponse.statusCode == 200) {
+      GironiHandler gironiHandler = GironiHandler();
+      MatchesFinHandler matchesFinHandler = MatchesFinHandler();
       //ricarico lista matchbet
+      //ricarico lista gironi bet perchè ci potrebbe essere stata una compilazione automatica
+      //ricarico lista matchesFin bet perche ci potrebbe essere stata una compilazione automatica
       httpProvider.updateLoadingState(true);
       if (context.mounted) {
-        await saveAllMatchesBet(context);
+        await Future.wait([
+          saveAllMatchesBet(context),
+          gironiHandler.saveAllGironiBet(context),
+          matchesFinHandler.saveAllMatchesBet(context),
+        ]);
       }
       httpProvider.updateLoadingState(false);
 

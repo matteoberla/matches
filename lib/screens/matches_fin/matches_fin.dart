@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matches/components/countdown_timer.dart';
 import 'package:matches/components/matches_components/match_fin_day_group.dart';
 import 'package:matches/components/matches_components/match_fin_tile.dart';
 import 'package:matches/components/palladio_std_components/palladio_app_bar.dart';
@@ -48,22 +49,29 @@ class _MatchesFinPageState extends State<MatchesFinPage> {
           ),
         ),
         body: PalladioBody(
-          child: StickyGroupedListView<dynamic, String>(
-              elements: matchesFinProvider.matchesList,
-              groupBy: (element) =>
-                  DateTimeHandler.getFormattedDateForAPI(
-                      element.date, DateFormatType.date) ??
-                  "Mai",
-              stickyHeaderBackgroundColor: transparent,
-              groupComparator: (g1, g2) {
-                return DateTime.parse(g1).compareTo(DateTime.parse(g2));
-              },
-              groupSeparatorBuilder: (dynamic element) =>
-                  MatchFinDayGroup(match: element),
-              itemBuilder: (context, dynamic element) =>
-                  MatchFinTile(match: element),
-              itemComparator: (e1, e2) => e1.id.compareTo(e2.id),
-              elementIdentifier: (element) => element.name),
+          child: Column(
+            children: [
+              const CountdownWidget(),
+              Expanded(
+                child: StickyGroupedListView<dynamic, String>(
+                    elements: matchesFinProvider.matchesList,
+                    groupBy: (element) =>
+                        DateTimeHandler.getFormattedDateForAPI(
+                            element.date, DateFormatType.date) ??
+                        "Mai",
+                    stickyHeaderBackgroundColor: transparent,
+                    groupComparator: (g1, g2) {
+                      return DateTime.parse(g1).compareTo(DateTime.parse(g2));
+                    },
+                    groupSeparatorBuilder: (dynamic element) =>
+                        MatchFinDayGroup(match: element),
+                    itemBuilder: (context, dynamic element) =>
+                        MatchFinTile(match: element),
+                    itemComparator: (e1, e2) => e1.id.compareTo(e2.id),
+                    elementIdentifier: (element) => element.name),
+              ),
+            ],
+          ),
         ),
         drawer: PalladioDrawer(
           drawerKey: _key,

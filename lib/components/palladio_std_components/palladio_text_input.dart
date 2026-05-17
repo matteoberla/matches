@@ -59,6 +59,10 @@ class PalladioTextInput extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.white),
             borderRadius: BorderRadius.circular(10),
           ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.circular(10),
+          ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade400),
             borderRadius: BorderRadius.circular(10),

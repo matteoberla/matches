@@ -30,6 +30,8 @@ class GironePosRow extends StatelessWidget {
             child: PalladioTextInput(
               textController: posController ?? TextEditingController(),
               allowedChars: AllowedChars.integer,
+              readOnly: true,
+              enabled: false,
             ),
           ),
         ],

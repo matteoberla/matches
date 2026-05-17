@@ -94,20 +94,21 @@ class GironiBottomSheetsHandler {
                           girone: selectedGirone,
                           activeActions: false,
                         ),
-                        Row(
-                          children: [
-                            PalladioActionButton(
-                                title: "Compila girone",
-                                onTap: () async {
-                                  await gironiCallback.onCompilaGironePressed(
-                                      context,
-                                      gironiProvider,
-                                      selectedGirone,
-                                      selectedGironeBet);
-                                },
-                                backgroundColor: interactiveColor),
-                          ],
-                        ),
+                        if (false)
+                          Row(
+                            children: [
+                              PalladioActionButton(
+                                  title: "Compila girone",
+                                  onTap: () async {
+                                    await gironiCallback.onCompilaGironePressed(
+                                        context,
+                                        gironiProvider,
+                                        selectedGirone,
+                                        selectedGironeBet);
+                                  },
+                                  backgroundColor: interactiveColor),
+                            ],
+                          ),
                         const PalladioText(
                           "Il tuo risultato",
                           type: PTextType.h1,
@@ -132,6 +133,7 @@ class GironiBottomSheetsHandler {
                           onExit: () {
                             Navigator.of(gironiBetContext).pop();
                           },
+                          showSave: false,
                           onSave: () async {
                             await gironiCallback.onGironeBetSaved(
                                 gironiBetContext, provider);

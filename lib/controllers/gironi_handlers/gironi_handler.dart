@@ -54,6 +54,9 @@ class GironiHandler {
   }
 
   GironiBet? getGironeBetFromGirone(GironiProvider provider, String? girone) {
+    //print(girone);
+    //print(provider.gironiBetList.first.toJson());
+
     return provider.gironiBetList
         .where((element) => element.girone == girone)
         .firstOrNull;
