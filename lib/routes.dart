@@ -1,5 +1,6 @@
 import 'package:matches/screens/capo_azz/capo_azz.dart';
 import 'package:matches/screens/capo_euro/capo_euro.dart';
+import 'package:matches/screens/crediti/crediti_page.dart';
 import 'package:matches/screens/gironi/girone_info.dart';
 import 'package:matches/screens/gironi/gironi.dart';
 import 'package:matches/screens/goal_veloce/goal_veloce.dart';
@@ -40,5 +41,6 @@ var routes = {
   '/capo_azz': (context) => const CapoAzzPage(),
   //***
   '/points_list': (context) => const PointsListPage(),
-  '/users_list': (context) => const UsersListPage()
+  '/users_list': (context) => const UsersListPage(),
+  '/credits': (context) => const CreditiPage(),
 };

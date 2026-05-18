@@ -193,6 +193,20 @@ class PalladioDrawer extends StatelessWidget {
                           setupCallback.onSquadrePressed(context);
                         },
                       ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "users.png",
+                      ),
+                      title: const PalladioText(
+                        "Partecipanti",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onPartecipantiPressed(context);
+                      },
+                    ),
                     if (loginHandler.currentUserIsAdminOrImpersona(context))
                       const Divider(),
                     if (loginHandler.currentUserIsAdminOrImpersona(context))
@@ -209,23 +223,23 @@ class PalladioDrawer extends StatelessWidget {
                           setupCallback.onClassificaPressed(context);
                         },
                       ),
-                    const Divider(),
-                    ListTile(
-                      leading: const PalladioAssetImage(
-                        directory: "general",
-                        fileName: "users.png",
-                      ),
-                      title: const PalladioText(
-                        "Partecipanti",
-                        type: PTextType.h3,
-                      ),
-                      onTap: () async {
-                        setupCallback.onPartecipantiPressed(context);
-                      },
-                    ),
                   ],
                 ),
               ),
+            ),
+            const Divider(),
+            ListTile(
+              leading: const PalladioAssetImage(
+                directory: "general",
+                fileName: "cds_logo.jpg",
+              ),
+              title: const PalladioText(
+                "Crediti",
+                type: PTextType.h3,
+              ),
+              onTap: () async {
+                setupCallback.onCreditiPressed(context);
+              },
             ),
             const Divider(),
             ListTile(

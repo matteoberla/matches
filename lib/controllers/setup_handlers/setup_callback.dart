@@ -47,6 +47,10 @@ class SetupCallback {
     Navigator.pushReplacementNamed(context, '/users_list');
   }
 
+  onCreditiPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/credits');
+  }
+
   onLogoutPressed(BuildContext context) async {
     await Alerts.showConfirmAlertNoContext("Conferma", "Eseguire il logout?",
         () {
