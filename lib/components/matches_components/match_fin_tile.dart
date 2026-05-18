@@ -103,12 +103,8 @@ class MatchFinTile extends StatelessWidget {
                               type: PTextType.h3,
                               textColor: opaqueTextColor,
                             ),
-                            Row(
-                              children: [
-                                TeamFlagName(
-                                  team: team1Bet,
-                                ),
-                              ],
+                            TeamFlagName(
+                              team: team1Bet,
                             ),
                           ],
                         ),
@@ -155,13 +151,9 @@ class MatchFinTile extends StatelessWidget {
                               type: PTextType.h3,
                               textColor: opaqueTextColor,
                             ),
-                            Row(
-                              children: [
-                                TeamFlagName(
-                                  team: team2Bet,
-                                  nameOnLeft: true,
-                                ),
-                              ],
+                            TeamFlagName(
+                              team: team2Bet,
+                              nameOnLeft: true,
                             ),
                           ],
                         ),

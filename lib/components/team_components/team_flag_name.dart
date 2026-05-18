@@ -17,35 +17,42 @@ class TeamFlagName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        mainAxisAlignment: align,
-        children: [
-          if (nameOnLeft)
-            PalladioText(
-              team?.breve ?? "???",
-              type: PTextType.h2,
-              bold: true,
-              maxLines: 1,
-            ),
-          if (nameOnLeft)
-            const EmptySpace(
-              width: 10,
-            ),
-          TeamsHandler.getTeamFlag(team?.iso),
-          if (!nameOnLeft)
-            const EmptySpace(
-              width: 10,
-            ),
-          if (!nameOnLeft)
-            PalladioText(
-              team?.breve ?? "???",
-              type: PTextType.h2,
-              bold: true,
-              maxLines: 1,
-            ),
-        ],
-      ),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: align,
+          children: [
+            if (nameOnLeft)
+              PalladioText(
+                team?.breve ?? "???",
+                type: PTextType.h2,
+                bold: true,
+                maxLines: 1,
+              ),
+            if (nameOnLeft)
+              const EmptySpace(
+                width: 10,
+              ),
+            TeamsHandler.getTeamFlag(team?.iso),
+            if (!nameOnLeft)
+              const EmptySpace(
+                width: 10,
+              ),
+            if (!nameOnLeft)
+              PalladioText(
+                team?.breve ?? "???",
+                type: PTextType.h2,
+                bold: true,
+                maxLines: 1,
+              ),
+          ],
+        ),
+        PalladioText(
+          team?.name ?? "???",
+          type: PTextType.h5,
+          maxLines: 1,
+        )
+      ],
     );
   }
 }

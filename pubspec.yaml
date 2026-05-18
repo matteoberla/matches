@@ -54,6 +54,7 @@ dependencies:
   group_button: ^5.3.3
   sticky_grouped_list: ^3.1.0
   scrollable_positioned_list: ^0.3.8
+  timelines_plus: ^2.0.0
 
 dev_dependencies:
   flutter_test:
