@@ -93,7 +93,7 @@ class _CountdownDisplay extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const PalladioText(
-            "Tempo rimanente",
+            "Compila entro",
             type: PTextType.h5,
           ),
           const EmptySpace(

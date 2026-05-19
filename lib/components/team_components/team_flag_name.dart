@@ -3,6 +3,7 @@ import 'package:matches/components/empty_space.dart';
 import 'package:matches/components/palladio_std_components/palladio_text.dart';
 import 'package:matches/controllers/teams_handlers/teams_handler.dart';
 import 'package:matches/models/teams_models/teams_model.dart';
+import 'package:matches/styles.dart';
 
 class TeamFlagName extends StatelessWidget {
   const TeamFlagName(
@@ -50,6 +51,7 @@ class TeamFlagName extends StatelessWidget {
         PalladioText(
           team?.name ?? "???",
           type: PTextType.h5,
+          textColor: opaqueTextColor,
           maxLines: 1,
         )
       ],

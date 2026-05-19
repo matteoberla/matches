@@ -336,7 +336,7 @@ class CharityCard extends StatelessWidget {
             ),
             const Divider(),
             const Text(
-              'Ci teniamo a ricordare che le quote di partecipazione di ogni edizione vengono devolute interamente in beneficenza alla Città della Speranza, fondazione impegnata nella ricerca oncologica pediatrica.',
+              'Ci teniamo a ricordare che parte delle quote di partecipazione di ogni edizione vengono devolute in beneficenza alla Città della Speranza, fondazione impegnata nella ricerca oncologica pediatrica.',
               style: TextStyle(fontSize: 14, height: 1.6),
               textAlign: TextAlign.center,
             ),
