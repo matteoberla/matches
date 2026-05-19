@@ -16,6 +16,8 @@ import 'package:matches/screens/teams/team_info.dart';
 import 'package:matches/screens/teams/teams_list.dart';
 import 'package:matches/screens/users_list/users_list.dart';
 
+import 'screens/hall_of_fame/hall_of_fame_page.dart';
+
 var routes = {
   '/login': (context) => const LoginPage(),
   '/signup': (context) => const SignupPage(),
@@ -43,4 +45,5 @@ var routes = {
   '/points_list': (context) => const PointsListPage(),
   '/users_list': (context) => const UsersListPage(),
   '/credits': (context) => const CreditiPage(),
+  '/hof': (context) => const HallOfFamePage(),
 };

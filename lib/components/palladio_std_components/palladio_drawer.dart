@@ -207,6 +207,20 @@ class PalladioDrawer extends StatelessWidget {
                         setupCallback.onPartecipantiPressed(context);
                       },
                     ),
+                    const Divider(),
+                    ListTile(
+                      leading: const PalladioAssetImage(
+                        directory: "general",
+                        fileName: "hof.png",
+                      ),
+                      title: const PalladioText(
+                        "Hall Of Fame",
+                        type: PTextType.h3,
+                      ),
+                      onTap: () async {
+                        setupCallback.onHOFPressed(context);
+                      },
+                    ),
                     if (loginHandler.currentUserIsAdminOrImpersona(context))
                       const Divider(),
                     if (loginHandler.currentUserIsAdminOrImpersona(context))

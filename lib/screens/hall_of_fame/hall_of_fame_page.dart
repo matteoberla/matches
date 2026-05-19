@@ -3,22 +3,24 @@ import 'package:matches/components/crediti_components/crediti_timeline.dart';
 import 'package:matches/components/palladio_std_components/palladio_app_bar.dart';
 import 'package:matches/components/palladio_std_components/palladio_body.dart';
 import 'package:matches/components/palladio_std_components/palladio_drawer.dart';
-import 'package:matches/components/timeline_components/charity_card.dart';
-import 'package:matches/components/timeline_components/charity_indicator.dart';
+import 'package:matches/components/timeline_components/classifica_card.dart';
 import 'package:matches/components/timeline_components/descriptive_card.dart';
 import 'package:matches/components/timeline_components/icon_indicator.dart';
+import 'package:matches/components/timeline_components/loading_indicator.dart';
+import 'package:matches/components/timeline_components/trophy_indicator.dart';
 import 'package:matches/controllers/setup_handlers/setup_callback.dart';
+import 'package:matches/models/timeline_models/classifiche_lists.dart';
 import 'package:matches/models/timeline_models/timeline_data.dart';
 import 'package:matches/styles.dart';
 
-class CreditiPage extends StatefulWidget {
-  const CreditiPage({super.key});
+class HallOfFamePage extends StatefulWidget {
+  const HallOfFamePage({super.key});
 
   @override
-  State<CreditiPage> createState() => _CreditiPageState();
+  State<HallOfFamePage> createState() => _HallOfFamePageState();
 }
 
-class _CreditiPageState extends State<CreditiPage> {
+class _HallOfFamePageState extends State<HallOfFamePage> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   final SetupCallback setupCallback = SetupCallback();
 
@@ -27,21 +29,52 @@ class _CreditiPageState extends State<CreditiPage> {
       indicator:
           IconIndicator(icon: Icons.military_tech, color: Colors.blueAccent),
       content: DescriptiveCard(
-        title: '1996',
+        title: 'I campioni del passato',
         description:
-            'Creazione by Riky Frigo© del gioco di previsione risultati più richiesto ad oggi',
+            'Le leggende prima o poi ci abbandoneranno (🤘🏼), ma i loro punteggi resteranno scolpiti per sempre... nello schermo.',
       ),
     ),
     const TimelineData(
-      indicator: IconIndicator(icon: Icons.terminal, color: Colors.green),
-      content: DescriptiveCard(
-        title: '2024',
-        description: 'Creazione della versione digitale by Matteoberla',
+      indicator: TrophyIndicator(),
+      content: ClassificaCard(
+        entries: classificaEu2016,
+        title: 'Classifica Europei 2016',
       ),
     ),
     const TimelineData(
-      indicator: CharityIndicator(),
-      content: CharityCard(),
+      indicator: TrophyIndicator(),
+      content: ClassificaCard(
+        entries: classificaMo2018,
+        title: 'Classifica Mondiali 2018',
+      ),
+    ),
+    const TimelineData(
+      indicator: TrophyIndicator(),
+      content: ClassificaCard(
+        entries: classificaEu2020,
+        title: 'Classifica Europei 2020/2021',
+      ),
+    ),
+    const TimelineData(
+      indicator: TrophyIndicator(),
+      content: ClassificaCard(
+        entries: classificaMo2022,
+        title: 'Classifica Mondiali 2022',
+      ),
+    ),
+    const TimelineData(
+      indicator: TrophyIndicator(),
+      content: ClassificaCard(
+        entries: classificaEu2024,
+        title: 'Classifica Europei 2024',
+      ),
+    ),
+    const TimelineData(
+      indicator: LoadingIndicator(),
+      content: ClassificaCard(
+        entries: classificaMo2026,
+        title: 'Classifica Mondiali 2026',
+      ),
     ),
   ];
 
@@ -52,7 +85,7 @@ class _CreditiPageState extends State<CreditiPage> {
       child: Scaffold(
         key: _key,
         appBar: PalladioAppBar(
-          title: "Crediti",
+          title: "Hall Of Fame",
           backgroundColor: canvasColor,
           leading: IconButton(
             onPressed: () => setupCallback.onMenuPressed(context, _key),

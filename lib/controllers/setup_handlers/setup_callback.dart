@@ -51,6 +51,10 @@ class SetupCallback {
     Navigator.pushReplacementNamed(context, '/credits');
   }
 
+  onHOFPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/hof');
+  }
+
   onLogoutPressed(BuildContext context) async {
     await Alerts.showConfirmAlertNoContext("Conferma", "Eseguire il logout?",
         () {
