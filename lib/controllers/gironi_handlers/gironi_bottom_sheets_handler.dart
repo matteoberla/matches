@@ -115,17 +115,33 @@ class GironiBottomSheetsHandler {
                           bold: true,
                         ),
                         GironePosRow(
-                            team: team1,
-                            posController: selectedGironeBet?.pos1Controller),
+                          team: team1,
+                          posController: selectedGironeBet?.pos1Controller,
+                          pt: selectedGironeBet?.pt1,
+                          gf: selectedGironeBet?.golFatti1,
+                          gs: selectedGironeBet?.golSubiti1,
+                        ),
                         GironePosRow(
-                            team: team2,
-                            posController: selectedGironeBet?.pos2Controller),
+                          team: team2,
+                          posController: selectedGironeBet?.pos2Controller,
+                          pt: selectedGironeBet?.pt2,
+                          gf: selectedGironeBet?.golFatti2,
+                          gs: selectedGironeBet?.golSubiti2,
+                        ),
                         GironePosRow(
-                            team: team3,
-                            posController: selectedGironeBet?.pos3Controller),
+                          team: team3,
+                          posController: selectedGironeBet?.pos3Controller,
+                          pt: selectedGironeBet?.pt3,
+                          gf: selectedGironeBet?.golFatti3,
+                          gs: selectedGironeBet?.golSubiti3,
+                        ),
                         GironePosRow(
-                            team: team4,
-                            posController: selectedGironeBet?.pos4Controller),
+                          team: team4,
+                          posController: selectedGironeBet?.pos4Controller,
+                          pt: selectedGironeBet?.pt4,
+                          gf: selectedGironeBet?.golFatti4,
+                          gs: selectedGironeBet?.golSubiti4,
+                        ),
                         const EmptySpace(
                           height: 10,
                         ),
@@ -133,7 +149,8 @@ class GironiBottomSheetsHandler {
                           onExit: () {
                             Navigator.of(gironiBetContext).pop();
                           },
-                          showSave: false,
+                          showSave: loginHandler
+                              .currentUserIsAdminOrImpersona(context),
                           onSave: () async {
                             await gironiCallback.onGironeBetSaved(
                                 gironiBetContext, provider);
