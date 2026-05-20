@@ -80,7 +80,7 @@ class _PointsListPageState extends State<PointsListPage> {
                 itemBuilder: (context, index) {
                   Points points = pointsProvider.pointsList[index];
 
-                  print(points.toJson());
+                  //print(points.toJson());
 
                   return ListTile(
                     leading: PalladioText(

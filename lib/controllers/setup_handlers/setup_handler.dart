@@ -10,7 +10,6 @@ class SetupHandler {
     return true;
   }
 
-
   Future<bool> getAppInfo(BuildContext context) async {
     var setupProvider = Provider.of<SetupProvider>(context, listen: false);
 
@@ -18,11 +17,10 @@ class SetupHandler {
 
     String version = packageInfo.version;
     String buildNumber = packageInfo.buildNumber;
-    print(version);
+    //print(version);
 
     setupProvider.updateAppInfo(version, buildNumber);
 
     return true;
   }
-
 }

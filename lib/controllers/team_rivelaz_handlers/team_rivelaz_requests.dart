@@ -12,7 +12,7 @@ class TeamRivelazRequests {
     Map<String, String> headers = {};
     headers.addAll(authHeader);
 
-    print(headers);
+    //print(headers);
 
     http.Response response = await HttpHandler.get(
         HttpHandler.ipServer, "${HttpHandler.apiPath}/team_rivelaz_bet",
@@ -62,7 +62,7 @@ class TeamRivelazRequests {
     Map<String, String> headers = {};
     headers.addAll(authHeader);
 
-    print(headers);
+    //print(headers);
 
     http.Response response = await HttpHandler.get(
         HttpHandler.ipServer, "${HttpHandler.apiPath}/team_rivelaz",
